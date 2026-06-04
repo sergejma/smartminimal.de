@@ -1,0 +1,127 @@
+/* Gemeinsame Styles für die Rechtstexte von smartminimal.de — im Stil der Landingpage. */
+:root {
+  --bg: #f1efe8;
+  --bg-center: #f7f5ef;
+  --ink: #1b1a14;
+  --muted: rgba(27, 26, 20, 0.5);
+  --hair: rgba(27, 26, 20, 0.1);
+  --sans: -apple-system, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  --serif: "New York", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
+    ui-serif, serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d0d0b;
+    --bg-center: #17170f;
+    --ink: #ece8df;
+    --muted: rgba(236, 232, 223, 0.5);
+    --hair: rgba(236, 232, 223, 0.12);
+  }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: radial-gradient(120% 90% at 50% 0%, var(--bg-center) 0%, var(--bg) 60%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.65;
+}
+
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+.logo {
+  font-family: var(--sans);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  user-select: none;
+  text-decoration: none;
+  display: inline-block;
+}
+.logo .soft { font-weight: 500; opacity: 0.62; }
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 26px 0 0;
+}
+.nav .logo { font-size: 1.2rem; opacity: 0.9; }
+.nav a.back {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+.nav a.back:hover { color: var(--ink); }
+
+main { padding: 6vh 0 4vh; }
+
+.doc-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(2rem, 6vw, 3rem);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.effective {
+  margin-top: 0.9rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.lede {
+  margin-top: 1.6rem;
+  font-size: 1.08rem;
+  color: var(--ink);
+}
+
+h2 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.5rem;
+  letter-spacing: -0.01em;
+  margin: 2.6rem 0 0.8rem;
+}
+h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 1.6rem 0 0.4rem;
+}
+p { margin: 0.7rem 0; color: var(--ink); }
+.muted { color: var(--muted); }
+
+ul { margin: 0.7rem 0 0.7rem 1.3rem; }
+li { margin: 0.35rem 0; }
+
+a { color: var(--ink); text-underline-offset: 2px; }
+
+address { font-style: normal; }
+
+.callout {
+  margin: 1.6rem 0;
+  padding: 1.3rem 1.5rem;
+  border: 1px solid var(--hair);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.45);
+  font-size: 0.98rem;
+}
+@media (prefers-color-scheme: dark) {
+  .callout { background: rgba(255, 255, 255, 0.04); }
+}
+
+footer {
+  border-top: 1px solid var(--hair);
+  margin-top: 5vh;
+  padding: 2.4rem 0 4rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+footer a { color: var(--muted); text-decoration: none; }
+footer a:hover { color: var(--ink); }
+.foot-links { display: flex; gap: 1.4rem; flex-wrap: wrap; margin-bottom: 1rem; }

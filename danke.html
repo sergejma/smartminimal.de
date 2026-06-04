@@ -65,7 +65,9 @@
       footer { border-top: 1px solid var(--d-line); padding: 2.4rem 0 3rem; }
       .foot-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
       .foot-row .logo { font-size: 1.05rem; opacity: 0.8; }
-      .copyright { font-size: 0.8rem; color: var(--d-muted); }
+      .foot-right { display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; font-size: 0.8rem; color: var(--d-muted); }
+      .foot-right a { color: var(--d-muted); text-decoration: none; transition: color 0.2s ease; }
+      .foot-right a:hover { color: var(--d-fg); }
     </style>
   </head>
   <body>
@@ -100,9 +102,15 @@
       <footer>
         <div class="foot-row">
           <a class="logo" href="/" aria-label="smartminimal">smart<span class="soft">minimal</span></a>
-          <span class="copyright">© 2026 smartminimal.de</span>
+          <span class="foot-right">
+            <a href="/impressum.html">Impressum</a>
+            <a href="/datenschutz.html">Datenschutz</a>
+            <span>© 2026 smartminimal.de</span>
+          </span>
         </div>
       </footer>
     </div>
+
+    <script src="/consent.js" defer></script>
   </body>
 </html>

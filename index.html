@@ -306,6 +306,10 @@
       }
       .field input::placeholder { color: rgba(27, 26, 20, 0.38); }
       .field input:focus { outline: none; border-color: rgba(27, 26, 20, 0.4); }
+      .consent { margin: 0.3rem 0 1.4rem; }
+      .consent label { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.86rem; line-height: 1.5; color: var(--p-muted); cursor: pointer; }
+      .consent input { margin-top: 0.18rem; width: 1.05rem; height: 1.05rem; flex-shrink: 0; accent-color: #1b1a14; cursor: pointer; }
+      .consent a { color: var(--p-ink); text-underline-offset: 2px; }
       .form-submit { margin-top: 0.6rem; }
       .form-submit .btn { width: 100%; justify-content: center; }
       .closing .cta-note { color: var(--p-muted); margin-top: 1.3rem; max-width: 46ch; margin-left: auto; margin-right: auto; }
@@ -599,6 +603,12 @@
               <label for="website">Website</label>
               <input id="website" name="website" type="text" placeholder="deineseite.de" />
             </div>
+            <div class="consent">
+              <label>
+                <input type="checkbox" name="datenschutz" value="zugestimmt" required />
+                <span>Ich habe die <a href="/datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage zu.</span>
+              </label>
+            </div>
             <div class="field form-submit">
               <button class="btn btn-dark" type="submit">Analyse anfragen</button>
             </div>
@@ -617,13 +627,17 @@
             <div class="foot-links">
               <a href="#how">So arbeite ich</a>
               <a href="#pakete">Pakete</a>
-              <a href="#anfrage">Analyse anfragen</a>
-              <a href="mailto:sergej@mindcom.io">Kontakt</a>
+              <a href="/impressum.html">Impressum</a>
+              <a href="/datenschutz.html">Datenschutz</a>
+              <a href="#" data-consent-open>Cookie-Einstellungen</a>
+              <a href="mailto:markwart@smartminimal.de">Kontakt</a>
             </div>
           </div>
           <p class="copyright">© 2026 smartminimal.de</p>
         </footer>
       </div>
     </div>
+
+    <script src="/consent.js" defer></script>
   </body>
 </html>
