@@ -170,7 +170,7 @@
       .win-bar i { width: 10px; height: 10px; border-radius: 50%; background: rgba(127, 127, 127, 0.4); }
       .win-url { margin-left: 12px; font-size: 11px; opacity: 0.45; font-variant: small-caps; letter-spacing: 0.04em; }
 
-      .screen { padding: clamp(2rem, 5vw, 3.2rem) clamp(1.4rem, 4vw, 2.6rem) clamp(2rem, 4vw, 3rem); }
+      .screen { padding: clamp(2rem, 5vw, 3.2rem) clamp(1.4rem, 4vw, 2.6rem) clamp(2rem, 4vw, 3rem); text-align: left; }
       .screen.light { background: #f4f2ea; color: #1b1a14; }
       .screen.dark { background: #141410; color: #ece8df; }
 
@@ -202,7 +202,8 @@
       .r-item.current .r-dot { border-color: #ece8df; color: #ece8df; box-shadow: 0 0 0 4px rgba(236, 232, 223, 0.1); }
 
       /* ---------- Funnel chart mock (section 4, light) ---------- */
-      .mock-center { margin: 3.6rem auto 12vh; display: flex; justify-content: center; }
+      #how { padding-bottom: 12vh; }
+      .mock-center { margin: 3rem auto 0; display: flex; justify-content: center; }
       .fchart-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.6rem; }
       .fchart-head .t { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(27, 26, 20, 0.5); }
       .tag-live { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; background: #1b1a14; color: #f7f5ef; }
@@ -220,7 +221,7 @@
 
       /* ---------- Portrait ---------- */
       .portrait {
-        width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 28%;
+        width: 100%; aspect-ratio: 1 / 1; object-fit: cover; object-position: center;
         border-radius: 20px; border: 1px solid var(--d-line);
         box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.65); display: block;
       }
@@ -249,12 +250,12 @@
       .band.dark .section-head p { color: var(--d-muted); }
 
       /* ---------- Steps (how I work) ---------- */
-      .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; padding: 4rem 0 0; }
-      @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
-      .step { background: var(--p-card); border: 1px solid var(--p-line); border-radius: 20px; padding: 1.9rem 1.7rem 2.1rem; }
-      .step .num { font-family: var(--serif); font-size: 1.3rem; font-weight: 500; color: var(--p-muted); font-variant-numeric: tabular-nums; }
-      .step h3 { margin-top: 0.9rem; font-size: 1.18rem; font-weight: 600; letter-spacing: -0.01em; }
-      .step p { margin-top: 0.55rem; color: var(--p-muted); font-size: 0.97rem; }
+      .steps { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: clamp(1.6rem, 4vw, 3rem); padding: 3rem 0 0; }
+      @media (max-width: 760px) { .steps { grid-template-columns: 1fr; row-gap: 1.8rem; } }
+      .step { padding-top: 1.3rem; border-top: 1px solid rgba(27, 26, 20, 0.16); }
+      .step .num { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; color: var(--p-muted); font-variant-numeric: tabular-nums; }
+      .step h3 { margin-top: 0.5rem; font-size: 1.08rem; font-weight: 600; letter-spacing: -0.01em; }
+      .step p { margin-top: 0.45rem; color: var(--p-muted); font-size: 0.95rem; }
 
       /* ---------- Proof (stat cards) ---------- */
       .proof { padding-bottom: 12vh; }
@@ -558,7 +559,7 @@
     <div class="band dark">
       <div class="inner">
         <div class="who">
-          <img class="portrait" src="assets/sergej.jpg" alt="Sergej Markwart" width="900" height="1125" />
+          <img class="portrait" src="assets/sergej.jpg" alt="Sergej Markwart" width="900" height="900" />
           <div class="who-copy">
             <h2>Keine Buzzwords, keine Vertriebsgespräche. Einfach jemand, der das hier richtig gut kann.</h2>
             <p>
