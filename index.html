@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>smart minimal — Fullstack Marketing & Leads für Produkte ab 10.000 €</title>
+    <meta
+      name="description"
+      content="Fullstack Marketing für teure Produkte: Funnel, Ads, Tracking und Marke als ein System statt als Einzelteile. Seit über 10 Jahren auf High-Ticket spezialisiert. Wenige Kunden, kein Anzug, keine Buzzwords."
+    />
+    <meta name="theme-color" content="#0d0d0b" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="smart minimal — Fullstack Marketing & Leads für Produkte ab 10.000 €" />
+    <meta
+      property="og:description"
+      content="Teure Produkte verkaufen sich anders. Funnel, Ads, Tracking und Marke als ein System. Seit über 10 Jahren auf High-Ticket spezialisiert."
+    />
+    <meta property="og:url" content="https://smartminimal.de" />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="canonical" href="https://smartminimal.de/" />
+
+    <style>
+      :root {
+        --sans: -apple-system, "SF Pro Text", "Segoe UI", Roboto, Helvetica,
+          Arial, sans-serif;
+        --serif: "New York", "Iowan Old Style", "Palatino Linotype", Palatino,
+          Georgia, ui-serif, serif;
+
+        /* paper band */
+        --p-ink: #1b1a14;
+        --p-muted: rgba(27, 26, 20, 0.52);
+        --p-line: rgba(27, 26, 20, 0.08);
+        --p-card: rgba(255, 255, 255, 0.55);
+        --p-bgc: #f7f5ef;
+
+        /* dark band */
+        --d-fg: #ece8df;
+        --d-muted: rgba(236, 232, 223, 0.55);
+        --d-line: rgba(236, 232, 223, 0.1);
+        --d-card: rgba(255, 255, 255, 0.05);
+        --d-bgc: #17170f;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body {
+        background: #0d0d0b;
+        font-family: var(--sans);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        line-height: 1.55;
+        overflow-x: hidden;
+      }
+
+      .inner { max-width: 1080px; margin: 0 auto; padding: 0 24px; width: 100%; }
+
+      /* ---------- Bands ---------- */
+      .band { position: relative; }
+      .band.dark {
+        background: radial-gradient(120% 100% at 50% 0%, #1a1a12 0%, #0d0d0b 78%);
+        color: var(--d-fg);
+      }
+      .band.paper {
+        background: radial-gradient(120% 100% at 50% 0%, #f7f5ef 0%, #ece9e0 80%);
+        color: var(--p-ink);
+      }
+
+      /* ---------- Logo wordmark ---------- */
+      .logo {
+        font-family: var(--sans);
+        font-weight: 600;
+        letter-spacing: -0.015em;
+        user-select: none;
+        text-decoration: none;
+        color: inherit;
+        display: inline-block;
+      }
+      .logo .soft { font-weight: 500; opacity: 0.62; }
+
+      /* ---------- Nav ---------- */
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 24px 0 0;
+      }
+      .nav .logo { font-size: 1.25rem; }
+      .nav-links { display: flex; align-items: center; gap: 26px; font-size: 0.92rem; }
+      .nav-links a { color: var(--d-muted); text-decoration: none; transition: color 0.2s ease; }
+      .nav-links a:hover { color: var(--d-fg); }
+      .nav-links a.nav-cta { color: var(--d-fg); font-weight: 500; }
+      @media (max-width: 600px) { .nav-links .nav-text { display: none; } }
+
+      /* ---------- Buttons ---------- */
+      .btn {
+        font-family: var(--sans);
+        cursor: pointer;
+        border: none;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: transform 0.18s ease, opacity 0.2s ease;
+        font-size: 1rem;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+        padding: 0.95rem 2.1rem;
+        border-radius: 999px;
+      }
+      .btn:hover { transform: translateY(-1px); }
+      .btn:active { transform: translateY(0); opacity: 0.9; }
+      .btn-light { background: #ece8df; color: #141410; }
+      .btn-dark { background: #1b1a14; color: #f7f5ef; }
+      .btn-ghost {
+        background: none;
+        padding: 0.5rem 0.4rem;
+        font-size: 0.95rem;
+      }
+      .ghost-on-dark { color: var(--d-muted); }
+      .ghost-on-dark:hover { color: var(--d-fg); }
+      .ghost-on-paper { color: var(--p-muted); }
+      .ghost-on-paper:hover { color: var(--p-ink); }
+
+      /* ---------- Hero ---------- */
+      .hero { text-align: center; padding: 9vh 0 0; }
+      .hero h1 {
+        font-family: var(--serif);
+        font-weight: 500;
+        font-size: clamp(2.4rem, 6.4vw, 4.4rem);
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+        max-width: 18ch;
+        margin: 0 auto;
+      }
+      .hero .lede {
+        margin: 1.7rem auto 0;
+        max-width: 52ch;
+        font-size: clamp(1.05rem, 2.3vw, 1.2rem);
+        color: var(--d-muted);
+      }
+      .cta-row {
+        margin-top: 2.6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.4rem;
+        flex-wrap: wrap;
+      }
+      .cta-note { margin-top: 1.2rem; font-size: 0.82rem; color: var(--d-muted); letter-spacing: 0.01em; }
+      .hero-mock { margin-top: 6vh; padding-bottom: 1px; display: flex; justify-content: center; }
+
+      /* ---------- Browser window mock ---------- */
+      .win {
+        width: min(100%, 560px);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 50px 100px -35px rgba(0, 0, 0, 0.55);
+      }
+      .win-bar {
+        height: 38px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 0 15px;
+        background: rgba(127, 127, 127, 0.16);
+        backdrop-filter: blur(4px);
+      }
+      .win-bar i { width: 10px; height: 10px; border-radius: 50%; background: rgba(127, 127, 127, 0.4); }
+      .win-url { margin-left: 12px; font-size: 11px; opacity: 0.45; font-variant: small-caps; letter-spacing: 0.04em; }
+
+      .screen { padding: clamp(2rem, 5vw, 3.2rem) clamp(1.4rem, 4vw, 2.6rem) clamp(2rem, 4vw, 3rem); }
+      .screen.light { background: #f4f2ea; color: #1b1a14; }
+      .screen.dark { background: #141410; color: #ece8df; }
+
+      /* ---------- Funnel visual (hero mock) ---------- */
+      .fn-head { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.45; text-align: center; margin-bottom: 1.6rem; }
+      .funnel { display: flex; flex-direction: column; align-items: center; gap: 9px; }
+      .fn-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 13px 18px;
+        border-radius: 11px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(236, 232, 223, 0.1);
+        font-size: 0.92rem;
+      }
+      .fn-row .v { font-family: var(--serif); font-size: 1rem; font-weight: 500; opacity: 0.6; font-variant-numeric: tabular-nums; }
+      .fn-row.last { background: #ece8df; color: #141410; border-color: #ece8df; }
+      .fn-row.last .v { opacity: 1; }
+
+      /* ---------- Statement sections ---------- */
+      .statement { text-align: center; padding: 12vh 0; }
+      .statement .sc-eyebrow { font-size: 0.74rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; opacity: 0.5; margin-bottom: 1.3rem; }
+      .statement h2 {
+        font-family: var(--serif);
+        font-weight: 500;
+        font-size: clamp(2rem, 5vw, 3.1rem);
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+        max-width: 20ch;
+        margin: 0 auto;
+      }
+      .statement p { margin: 1.5rem auto 0; max-width: 56ch; font-size: 1.1rem; line-height: 1.6; }
+      .band.dark .statement p { color: var(--d-muted); }
+      .band.paper .statement p { color: var(--p-muted); }
+
+      /* ---------- Section heads ---------- */
+      .section-head { text-align: center; max-width: 46ch; margin: 0 auto; padding-top: 12vh; }
+      .section-head .sc-eyebrow { font-size: 0.74rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; opacity: 0.5; margin-bottom: 1rem; }
+      .section-head h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(2rem, 5vw, 3.1rem); letter-spacing: -0.02em; line-height: 1.1; }
+      .section-head p { margin: 1.2rem auto 0; max-width: 54ch; opacity: 0.62; font-size: 1.06rem; }
+      .band.dark .section-head p { color: var(--d-muted); }
+
+      /* ---------- Steps (how I work) ---------- */
+      .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; padding: 4rem 0 12vh; }
+      @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
+      .step { background: var(--p-card); border: 1px solid var(--p-line); border-radius: 20px; padding: 1.9rem 1.7rem 2.1rem; }
+      .step .num { font-family: var(--serif); font-size: 1.3rem; font-weight: 500; color: var(--p-muted); font-variant-numeric: tabular-nums; }
+      .step h3 { margin-top: 0.9rem; font-size: 1.18rem; font-weight: 600; letter-spacing: -0.01em; }
+      .step p { margin-top: 0.55rem; color: var(--p-muted); font-size: 0.97rem; }
+
+      /* ---------- Proof (stat cards) ---------- */
+      .proof { padding-bottom: 12vh; }
+      .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; padding: 4rem 0 0; }
+      @media (max-width: 760px) { .stats { grid-template-columns: 1fr; } }
+      .stat-card { border: 1px solid var(--d-line); background: var(--d-card); border-radius: 20px; padding: 2.2rem 1.9rem; text-align: center; }
+      .stat-card .v { font-family: var(--serif); font-weight: 500; font-size: clamp(2.2rem, 5vw, 2.9rem); letter-spacing: -0.02em; line-height: 1.05; }
+      .stat-card .k { margin-top: 0.7rem; font-size: 0.95rem; color: var(--d-muted); }
+      .stat-card.todo { border-style: dashed; }
+      .stat-card.todo .v { opacity: 0.55; }
+      .stat-card .needed { display: block; margin-top: 0.6rem; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(236, 232, 223, 0.4); }
+
+      /* ---------- Offers (plan cards) ---------- */
+      .pricing { padding: 0 0 12vh; }
+      .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin: 3.5rem auto 0; }
+      @media (max-width: 820px) { .plans { grid-template-columns: 1fr; max-width: 460px; } }
+      .plan { border: 1px solid var(--p-line); background: var(--p-card); border-radius: 22px; padding: 2.1rem 1.9rem; display: flex; flex-direction: column; }
+      .plan.pro { background: #1b1a14; color: #f7f5ef; border-color: #1b1a14; }
+      .plan .plan-name { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--p-muted); }
+      .plan.pro .plan-name { color: rgba(247, 245, 239, 0.6); }
+      .plan .price { font-family: var(--serif); font-weight: 500; font-size: 2.1rem; letter-spacing: -0.02em; margin-top: 0.55rem; line-height: 1; }
+      .plan .price small { font-family: var(--sans); font-size: 0.8rem; font-weight: 400; color: var(--p-muted); }
+      .plan.pro .price small { color: rgba(247, 245, 239, 0.55); }
+      .plan .plan-body { margin-top: 1.4rem; font-size: 0.97rem; line-height: 1.55; color: var(--p-ink); }
+      .plan.pro .plan-body { color: rgba(247, 245, 239, 0.92); }
+      .plan-spacer { flex: 1; }
+      .offer-foot { text-align: center; margin-top: 2.6rem; font-size: 0.95rem; color: var(--p-muted); }
+
+      /* ---------- Who I am ---------- */
+      .who { display: grid; grid-template-columns: 0.85fr 1fr; gap: clamp(2rem, 6vw, 5rem); align-items: center; padding: 12vh 0; }
+      @media (max-width: 820px) { .who { grid-template-columns: 1fr; text-align: center; } }
+      .photo-ph {
+        aspect-ratio: 4 / 5;
+        border-radius: 20px;
+        border: 1px dashed rgba(236, 232, 223, 0.22);
+        background: var(--d-card);
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        gap: 0.5rem; color: var(--d-muted); text-align: center; padding: 1.5rem;
+      }
+      .photo-ph .needed { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.7; }
+      .photo-ph .hint { font-size: 0.88rem; max-width: 22ch; }
+      .who h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(1.9rem, 4.4vw, 2.7rem); line-height: 1.12; letter-spacing: -0.02em; }
+      .who p { margin-top: 1.2rem; font-size: 1.08rem; line-height: 1.6; color: var(--d-muted); }
+
+      /* ---------- Close + form ---------- */
+      .closing { text-align: center; padding: 13vh 0 4rem; }
+      .closing h2 {
+        font-family: var(--serif); font-weight: 500;
+        font-size: clamp(1.9rem, 4.8vw, 2.8rem);
+        letter-spacing: -0.02em; line-height: 1.18;
+        max-width: 24ch; margin: 0 auto;
+      }
+      .form-wrap { max-width: 520px; margin: 3.4rem auto 0; text-align: left; }
+      .field { margin-bottom: 1.1rem; }
+      .field label { display: block; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.02em; color: var(--p-ink); margin-bottom: 0.45rem; }
+      .field input {
+        width: 100%; font-family: var(--sans); font-size: 1rem; color: var(--p-ink);
+        background: rgba(255, 255, 255, 0.65);
+        border: 1px solid var(--p-line); border-radius: 12px;
+        padding: 0.85rem 1rem; transition: border-color 0.2s ease;
+      }
+      .field input::placeholder { color: rgba(27, 26, 20, 0.38); }
+      .field input:focus { outline: none; border-color: rgba(27, 26, 20, 0.4); }
+      .form-submit { margin-top: 0.6rem; }
+      .form-submit .btn { width: 100%; justify-content: center; }
+      .closing .cta-note { color: var(--p-muted); margin-top: 1.3rem; max-width: 46ch; margin-left: auto; margin-right: auto; }
+
+      /* ---------- Footer ---------- */
+      footer { border-top: 1px solid var(--p-line); padding: 3rem 0 4rem; }
+      .foot-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+      .foot-row .logo { font-size: 1.05rem; opacity: 0.8; }
+      .foot-links { display: flex; gap: 1.4rem; flex-wrap: wrap; font-size: 0.86rem; }
+      .foot-links a { color: var(--p-muted); text-decoration: none; transition: color 0.2s ease; }
+      .foot-links a:hover { color: var(--p-ink); }
+      .copyright { margin-top: 1.7rem; font-size: 0.8rem; color: var(--p-muted); }
+    </style>
+  </head>
+  <body>
+    <!-- ===================== 1 · HERO (dark) ===================== -->
+    <div class="band dark">
+      <div class="inner">
+        <nav class="nav">
+          <a class="logo" href="/" aria-label="smartminimal">smart<span class="soft">minimal</span></a>
+          <div class="nav-links">
+            <a class="nav-text" href="#how">So arbeite ich</a>
+            <a class="nav-text" href="#pakete">Pakete</a>
+            <a class="nav-cta" href="#anfrage">Analyse anfragen</a>
+          </div>
+        </nav>
+
+        <header class="hero">
+          <h1>Fullstack Marketing &amp; Leads für Produkte ab 10.000 €.</h1>
+          <p class="lede">
+            Teure Produkte verkaufen sich anders als der schnelle Online-Kram.
+            Genau das mache ich seit über 10 Jahren – Funnel, Ads, Tracking und
+            Marke, sauber ineinander statt als Einzelteile.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-light" href="#anfrage">Analyse anfragen</a>
+            <a class="btn btn-ghost ghost-on-dark" href="#how">So arbeite ich →</a>
+          </div>
+          <p class="cta-note">Wenige Kunden. Kein Anzug, keine Buzzwords.</p>
+
+          <div class="hero-mock">
+            <div class="win">
+              <div class="win-bar"><i></i><i></i><i></i><span class="win-url">smartminimal</span></div>
+              <div class="screen dark">
+                <div class="fn-head">Vom ersten Klick bis zum Kauf</div>
+                <div class="funnel">
+                  <div class="fn-row" style="width: 100%"><span>Klick auf die Anzeige</span><span class="v">100</span></div>
+                  <div class="fn-row" style="width: 86%"><span>Landingpage gelesen</span><span class="v">58</span></div>
+                  <div class="fn-row" style="width: 70%"><span>Vertrauen aufgebaut</span><span class="v">31</span></div>
+                  <div class="fn-row" style="width: 54%"><span>Anfrage gesendet</span><span class="v">12</span></div>
+                  <div class="fn-row last" style="width: 40%"><span>Kauf</span><span class="v">4</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+      </div>
+    </div>
+
+    <!-- ===================== 2 · DAS PROBLEM (paper) ===================== -->
+    <div class="band paper">
+      <div class="inner">
+        <div class="statement">
+          <p class="sc-eyebrow">Das Problem</p>
+          <h2>Teure Produkte werden anders gekauft.</h2>
+          <p>
+            Wer ein paar tausend Euro ausgibt, klickt selten spontan auf „Kaufen“.
+            Da wird recherchiert, verglichen, drüber geschlafen – oft über Wochen.
+            Das ist völlig normal. Und genau darauf muss das Marketing einzahlen:
+            Vertrauen aufbauen, Zweifel ernst nehmen, in Ruhe überzeugen.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== 3 · WARUM STRATEGIEN NICHT GREIFEN (dark) ===================== -->
+    <div class="band dark">
+      <div class="inner">
+        <div class="statement">
+          <p class="sc-eyebrow">Warum die üblichen Strategien hier nicht greifen</p>
+          <h2>Die meisten Strategien sind für günstige Produkte gemacht.</h2>
+          <p>
+            Schnelle Ad, Produktseite, Button – das läuft gut bei einem 30-€-Produkt.
+            Bei einem teuren bringt dieselbe Mechanik Klicks und vielleicht ein paar
+            Anfragen, aber selten echte Käufer. Nicht weil jemand schlecht arbeitet,
+            sondern weil eine große Kaufentscheidung mehr braucht als einen schnellen Klick.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== 4 · WIE ICH ARBEITE (paper) ===================== -->
+    <div class="band paper" id="how">
+      <div class="inner">
+        <div class="section-head">
+          <p class="sc-eyebrow">Wie ich arbeite</p>
+          <h2>Ein roter Faden vom ersten Klick bis zum Kauf.</h2>
+          <p>
+            Ich baue keine einzelne Anzeige und keine hübsche Seite, sondern das
+            System dahinter – so, dass ein Interessent Schritt für Schritt bis zur
+            Kaufentscheidung mitgenommen wird. Mit sauberem Tracking, damit du klar
+            siehst, was wirklich verkauft.
+          </p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="num">01</div>
+            <h3>Research &amp; Analyse</h3>
+            <p>Ich arbeite mich tief in deinen Markt und deine Käufer ein.</p>
+          </div>
+          <div class="step">
+            <div class="num">02</div>
+            <h3>Die Maschine</h3>
+            <p>Funnel, Landingpages, Ads, Tracking. Als ein System, nicht als Einzelteile.</p>
+          </div>
+          <div class="step">
+            <div class="num">03</div>
+            <h3>Übergabe</h3>
+            <p>Du bekommst die Maschine dokumentiert in die Hand. Kein Abo, keine Abhängigkeit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== 5 · PROOF (dark) ===================== -->
+    <div class="band dark">
+      <div class="inner">
+        <div class="proof">
+          <div class="section-head">
+            <p class="sc-eyebrow">Proof</p>
+            <h2>Über 10 Jahre mit Warenkörben von 10.000 bis 20.000 €.</h2>
+          </div>
+          <div class="stats">
+            <div class="stat-card">
+              <div class="v">10+ Jahre</div>
+              <div class="k">High-Ticket</div>
+            </div>
+            <div class="stat-card">
+              <div class="v">Ø 17.000 €</div>
+              <div class="k">Warenkorb</div>
+            </div>
+            <div class="stat-card todo">
+              <div class="v">X</div>
+              <div class="k">qualifizierte Käufer geliefert</div>
+              <span class="needed">[INPUT NEEDED] — echte Zahl einsetzen</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== 6 · ANGEBOTE (paper) ===================== -->
+    <div class="band paper" id="pakete">
+      <div class="inner">
+        <div class="pricing">
+          <div class="section-head" style="padding-top: 12vh">
+            <p class="sc-eyebrow">Angebote</p>
+            <h2>Drei klare Pakete. Jedes mit Anfang und Ende.</h2>
+          </div>
+          <div class="plans">
+            <div class="plan">
+              <div class="plan-name">Analyse</div>
+              <div class="price">2.000 €</div>
+              <div class="plan-body">
+                Ich schaue mir deinen IST-Zustand genau an und zeige dir, wo dein
+                Funnel hakt – plus eine konkrete Roadmap. Bringt dir die Analyse
+                nichts Umsetzbares, bekommst du dein Geld zurück.
+              </div>
+            </div>
+            <div class="plan pro">
+              <div class="plan-name">Setup &amp; Übergabe</div>
+              <div class="price">ab 6.000 €</div>
+              <div class="plan-body">
+                Ich baue die komplette Lead-Maschine – Funnel, Seiten, Ads,
+                Tracking – dokumentiere alles und übergebe sie dir. Anfang, Ende,
+                fertig.
+              </div>
+            </div>
+            <div class="plan">
+              <div class="plan-name">Optimierungs-Sprints</div>
+              <div class="price">auf Anfrage</div>
+              <div class="plan-body">
+                Feste, abgeschlossene Pakete zum Nachbuchen. Kein Dauervertrag.
+              </div>
+            </div>
+          </div>
+          <p class="offer-foot">Ich arbeite nur mit wenigen Kunden gleichzeitig.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== 7 · WER ICH BIN (dark) ===================== -->
+    <div class="band dark">
+      <div class="inner">
+        <div class="who">
+          <div class="photo-ph">
+            <span class="needed">[INPUT NEEDED] Foto</span>
+            <span class="hint">Bodenständiges Porträt mit Cap – kein Studio, kein Anzug.</span>
+          </div>
+          <div class="who-copy">
+            <h2>Kein Anzug. Einfach jemand, der das hier richtig gut kann.</h2>
+            <p>
+              Ich bin ein bodenständiger Typ mit Cap, der sich seit über 10 Jahren
+              in eine Sache vertieft hat: teure, erklärungsbedürftige Produkte
+              verkaufen. Keine großen Sprüche, keine Buzzwords. Ich red lieber
+              Klartext und liefere.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== 8 · CLOSE + FORM (paper) ===================== -->
+    <div class="band paper" id="anfrage">
+      <div class="inner">
+        <div class="closing">
+          <h2>Dein Produkt ist gut genug, dass Leute mehrere tausend Euro dafür zahlen. Dein Marketing darf da mithalten.</h2>
+
+          <!-- [INPUT NEEDED] Formspree-Endpoint eintragen:
+               action="https://formspree.io/f/DEIN_FORM_ID" (oder eigenes Endpoint). -->
+          <form class="form-wrap" action="https://formspree.io/f/DEIN_FORM_ID" method="POST">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" required />
+            </div>
+            <div class="field">
+              <label for="firma">Firma</label>
+              <input id="firma" name="firma" type="text" />
+            </div>
+            <div class="field">
+              <label for="produkt">Produkt &amp; Preis</label>
+              <input id="produkt" name="produkt" type="text" placeholder="z. B. Coaching-Programm, 12.000 €" required />
+            </div>
+            <div class="field">
+              <label for="budget">Aktuelles monatliches Werbebudget</label>
+              <input id="budget" name="budget" type="text" placeholder="z. B. 5.000 €" />
+            </div>
+            <div class="field">
+              <label for="website">Website</label>
+              <input id="website" name="website" type="text" placeholder="deine-seite.de" />
+            </div>
+            <div class="field form-submit">
+              <button class="btn btn-dark" type="submit">Analyse anfragen</button>
+            </div>
+          </form>
+
+          <p class="cta-note">
+            Eine kurze Anfrage. Wenn's passt, reden wir. Wenn nicht, sag ich dir
+            ehrlich, woran es liegt.
+          </p>
+        </div>
+
+        <footer>
+          <div class="foot-row">
+            <a class="logo" href="/" aria-label="smartminimal">smart<span class="soft">minimal</span></a>
+            <div class="foot-links">
+              <a href="#how">So arbeite ich</a>
+              <a href="#pakete">Pakete</a>
+              <a href="#anfrage">Analyse anfragen</a>
+              <a href="mailto:sergej@mindcom.io">Kontakt</a>
+            </div>
+          </div>
+          <p class="copyright">© 2026 smartminimal.de</p>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
