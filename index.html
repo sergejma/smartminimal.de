@@ -9,17 +9,33 @@
       content="Fullstack Marketing für Premium Produkte: Funnel, Ads, Tracking und Markenaufbau als ein System statt als Einzelteile. Seit über 10 Jahren auf Premium Produkte spezialisiert. Wenige Kunden, kein Anzug, keine Buzzwords."
     />
     <meta name="theme-color" content="#0d0d0b" />
+    <meta name="author" content="Sergej Markwart" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
 
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="smart minimal" />
+    <meta property="og:locale" content="de_DE" />
     <meta property="og:title" content="smart minimal — Fullstack Marketing & Leads für Produkte ab 10.000 €" />
     <meta
       property="og:description"
       content="Premium Produkte verkaufen sich anders. Funnel, Ads, Tracking und Markenaufbau als ein System. Seit über 10 Jahren auf Premium Produkte spezialisiert."
     />
-    <meta property="og:url" content="https://smartminimal.de" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:url" content="https://smartminimal.de/" />
+    <meta property="og:image" content="https://smartminimal.de/assets/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="smart minimal — Fullstack Marketing & Leads für Produkte ab 10.000 €" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="smart minimal — Fullstack Marketing & Leads für Produkte ab 10.000 €" />
+    <meta name="twitter:description" content="Funnel, Ads, Tracking und Markenaufbau als ein System. Seit über 10 Jahren auf Premium Produkte spezialisiert." />
+    <meta name="twitter:image" content="https://smartminimal.de/assets/og.png" />
 
     <link rel="canonical" href="https://smartminimal.de/" />
+
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <style>
       :root {
@@ -281,6 +297,13 @@
       .plan-spacer { flex: 1; }
       .offer-foot { text-align: center; margin-top: 2.6rem; font-size: 0.95rem; color: var(--p-muted); }
 
+      /* ---------- FAQ ---------- */
+      .faq { max-width: 720px; margin: 4.5rem auto 0; }
+      .faq-item { padding: 1.5rem 0; border-top: 1px solid rgba(27, 26, 20, 0.14); }
+      .faq-item:first-child { border-top: none; }
+      .faq-item h3 { font-size: 1.06rem; font-weight: 600; letter-spacing: -0.01em; color: var(--p-ink); }
+      .faq-item p { margin-top: 0.55rem; color: var(--p-muted); font-size: 0.97rem; line-height: 1.6; max-width: 64ch; }
+
       /* ---------- Who I am ---------- */
       .who { display: grid; grid-template-columns: 0.8fr 1fr; gap: clamp(2rem, 6vw, 5rem); align-items: center; padding: 12vh 0; }
       @media (max-width: 820px) { .who { grid-template-columns: 1fr; text-align: center; } .portrait { max-width: 360px; margin: 0 auto; } }
@@ -323,6 +346,128 @@
       .foot-links a:hover { color: var(--p-ink); }
       .copyright { margin-top: 1.7rem; font-size: 0.8rem; color: var(--p-muted); }
     </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://smartminimal.de/#business",
+          "name": "smart minimal",
+          "alternateName": "smartminimal",
+          "url": "https://smartminimal.de/",
+          "image": "https://smartminimal.de/assets/og.png",
+          "logo": "https://smartminimal.de/assets/icon.svg",
+          "email": "markwart@smartminimal.de",
+          "description": "Fullstack Marketing für Premium Produkte ab 10.000 €: Funnel, Ads, Tracking und Markenaufbau als ein System. Seit über 10 Jahren auf erklärungsbedürftige Premium Produkte spezialisiert.",
+          "priceRange": "2.000 € – 6.000 €+",
+          "areaServed": { "@type": "Country", "name": "Deutschland" },
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Litestr. 4",
+            "postalCode": "48431",
+            "addressLocality": "Rheine",
+            "addressCountry": "DE"
+          },
+          "founder": { "@id": "https://smartminimal.de/#sergej" },
+          "knowsAbout": ["Premium Marketing", "Funnel", "Performance Marketing", "Conversion Tracking", "Lead Generierung", "Markenaufbau"],
+          "makesOffer": [
+            {
+              "@type": "Offer",
+              "name": "Analyse",
+              "price": "2000",
+              "priceCurrency": "EUR",
+              "description": "Analyse des aktuellen Funnels inkl. konkreter Roadmap. Geld-zurück, falls nichts Umsetzbares dabei ist.",
+              "itemOffered": { "@type": "Service", "name": "Marketing- und Funnel-Analyse" }
+            },
+            {
+              "@type": "Offer",
+              "name": "Setup & Übergabe",
+              "price": "6000",
+              "priceCurrency": "EUR",
+              "priceSpecification": {
+                "@type": "PriceSpecification",
+                "minPrice": "6000",
+                "priceCurrency": "EUR"
+              },
+              "description": "Komplette Lead-Maschine: Funnel, Landingpages, Ads und Tracking. Dokumentiert und übergeben.",
+              "itemOffered": { "@type": "Service", "name": "Aufbau einer Lead-Maschine" }
+            },
+            {
+              "@type": "Offer",
+              "name": "Optimierungssprints",
+              "description": "Feste, abgeschlossene Optimierungspakete zum Nachbuchen. Kein Dauervertrag.",
+              "itemOffered": { "@type": "Service", "name": "Optimierungssprints" }
+            }
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://smartminimal.de/#sergej",
+          "name": "Sergej Markwart",
+          "image": "https://smartminimal.de/assets/sergej.jpg",
+          "jobTitle": "Fullstack Marketer",
+          "worksFor": { "@id": "https://smartminimal.de/#business" },
+          "url": "https://smartminimal.de/"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://smartminimal.de/#website",
+          "url": "https://smartminimal.de/",
+          "name": "smart minimal",
+          "inLanguage": "de-DE",
+          "publisher": { "@id": "https://smartminimal.de/#business" }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://smartminimal.de/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Für wen ist smart minimal gedacht?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Für Anbieter erklärungsbedürftiger Premium Produkte mit Warenkörben ab etwa 10.000 €, bei denen eine Kaufentscheidung Wochen bis Monate dauert und nicht spontan per Klick fällt."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Was kostet die Zusammenarbeit?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Die Analyse kostet 2.000 € (Geld-zurück, falls nichts Umsetzbares dabei ist). Das komplette Setup & Übergabe gibt es ab 6.000 €. Optimierungssprints werden auf Anfrage als feste Pakete gebucht."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Warum funktioniert Standard-Marketing bei teuren Produkten nicht?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Ad, Produktseite, Kaufen-Button funktioniert bei einem 30 € Produkt. Bei mehreren tausend Euro wird recherchiert, verglichen und drüber geschlafen. Eine große Kaufentscheidung braucht Vertrauen über mehrere Stufen hinweg, nicht einen schnellen Klick."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Gibt es laufende Verträge oder Abos?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Nein. Jedes Paket hat einen klaren Anfang und ein klares Ende. Die fertige Lead-Maschine wird dokumentiert übergeben, es entsteht keine Abhängigkeit und kein Dauervertrag."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Wie läuft die Zusammenarbeit ab?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "In drei Schritten: Research & Analyse von Markt und Käufern, Aufbau der Maschine (Funnel, Landingpages, Ads, Tracking als ein System) und dokumentierte Übergabe an dich."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <!-- ===================== 1 · HERO (dark) ===================== -->
@@ -554,6 +699,33 @@
             </div>
           </div>
           <p class="offer-foot">Ich arbeite nur mit wenigen Kunden gleichzeitig.</p>
+
+          <div class="section-head" style="padding-top: 12vh">
+            <p class="sc-eyebrow">Fragen</p>
+            <h2>Häufige Fragen</h2>
+          </div>
+          <div class="faq">
+            <div class="faq-item">
+              <h3>Für wen ist smart minimal gedacht?</h3>
+              <p>Für Anbieter erklärungsbedürftiger Premium Produkte mit Warenkörben ab etwa 10.000&nbsp;€, bei denen eine Kaufentscheidung Wochen bis Monate dauert und nicht spontan per Klick fällt.</p>
+            </div>
+            <div class="faq-item">
+              <h3>Was kostet die Zusammenarbeit?</h3>
+              <p>Die Analyse kostet 2.000&nbsp;€ (Geld-zurück, falls nichts Umsetzbares dabei ist). Das komplette Setup &amp; Übergabe gibt es ab 6.000&nbsp;€. Optimierungssprints werden auf Anfrage als feste Pakete gebucht.</p>
+            </div>
+            <div class="faq-item">
+              <h3>Warum funktioniert Standard-Marketing bei teuren Produkten nicht?</h3>
+              <p>Ad, Produktseite, Kaufen-Button funktioniert bei einem 30&nbsp;€ Produkt. Bei mehreren tausend Euro wird recherchiert, verglichen und drüber geschlafen. Eine große Kaufentscheidung braucht Vertrauen über mehrere Stufen hinweg, nicht einen schnellen Klick.</p>
+            </div>
+            <div class="faq-item">
+              <h3>Gibt es laufende Verträge oder Abos?</h3>
+              <p>Nein. Jedes Paket hat einen klaren Anfang und ein klares Ende. Die fertige Lead-Maschine wird dokumentiert übergeben, es entsteht keine Abhängigkeit und kein Dauervertrag.</p>
+            </div>
+            <div class="faq-item">
+              <h3>Wie läuft die Zusammenarbeit ab?</h3>
+              <p>In drei Schritten: Research &amp; Analyse von Markt und Käufern, Aufbau der Maschine (Funnel, Landingpages, Ads, Tracking als ein System) und dokumentierte Übergabe an dich.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

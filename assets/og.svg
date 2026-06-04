@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="0%" r="120%">
+      <stop offset="0%" stop-color="#1a1a12"/>
+      <stop offset="78%" stop-color="#0d0d0b"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- wordmark -->
+  <text x="80" y="108" font-family="Helvetica, Arial, sans-serif" font-size="32" font-weight="600" letter-spacing="-0.4" fill="#ece8df">smart<tspan fill="#ece8df" fill-opacity="0.6" font-weight="500">minimal</tspan></text>
+
+  <!-- live tag -->
+  <circle cx="918" cy="98" r="6" fill="#6fae7a"/>
+  <text x="936" y="105" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="600" letter-spacing="1.5" fill="#ece8df" fill-opacity="0.55">SYSTEM LÄUFT</text>
+
+  <!-- headline -->
+  <text font-family="Georgia, 'Times New Roman', serif" font-size="68" font-weight="500" letter-spacing="-1.5" fill="#ece8df">
+    <tspan x="80" y="320">Fullstack Marketing &amp; Leads</tspan>
+    <tspan x="80" y="398">für Produkte ab 10.000&#8201;€.</tspan>
+  </text>
+
+  <!-- sub line -->
+  <text x="80" y="470" font-family="Helvetica, Arial, sans-serif" font-size="26" fill="#ece8df" fill-opacity="0.55">Funnel, Ads, Tracking und Markenaufbau als ein System.</text>
+
+  <!-- footer rule + url -->
+  <rect x="80" y="540" width="1040" height="1" fill="#ece8df" fill-opacity="0.12"/>
+  <text x="80" y="582" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#ece8df" fill-opacity="0.5">smartminimal.de</text>
+  <text x="1120" y="582" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#ece8df" fill-opacity="0.5">Seit über 10 Jahren auf Premium spezialisiert</text>
+</svg>
