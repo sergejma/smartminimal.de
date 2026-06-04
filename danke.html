@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Danke — smart minimal</title>
+    <meta name="description" content="Danke für deine Anfrage. Ich schaue sie mir in Ruhe an und melde mich persönlich bei dir." />
+    <meta name="theme-color" content="#0d0d0b" />
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href="https://smartminimal.de/danke.html" />
+    <style>
+      :root {
+        --sans: -apple-system, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        --serif: "New York", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, ui-serif, serif;
+        --d-fg: #ece8df;
+        --d-muted: rgba(236, 232, 223, 0.55);
+        --d-line: rgba(236, 232, 223, 0.1);
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        min-height: 100vh;
+        background: radial-gradient(120% 100% at 50% 0%, #1a1a12 0%, #0d0d0b 78%);
+        color: var(--d-fg);
+        font-family: var(--sans);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        line-height: 1.55;
+        display: flex;
+        flex-direction: column;
+      }
+      .inner { max-width: 1080px; margin: 0 auto; padding: 0 24px; width: 100%; }
+      .nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 0; }
+      .logo {
+        font-family: var(--sans); font-weight: 600; letter-spacing: -0.015em;
+        text-decoration: none; color: inherit; font-size: 1.25rem; user-select: none;
+      }
+      .logo .soft { font-weight: 500; opacity: 0.62; }
+      .nav a.back { color: var(--d-muted); text-decoration: none; font-size: 0.92rem; transition: color 0.2s ease; }
+      .nav a.back:hover { color: var(--d-fg); }
+
+      main { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 8vh 0; }
+      .check {
+        width: 64px; height: 64px; margin: 0 auto 2.4rem;
+        border-radius: 50%; border: 1.5px solid var(--d-line);
+        display: flex; align-items: center; justify-content: center;
+      }
+      .check svg { width: 28px; height: 28px; }
+      h1 {
+        font-family: var(--serif); font-weight: 500;
+        font-size: clamp(2.2rem, 6vw, 3.4rem);
+        line-height: 1.08; letter-spacing: -0.03em;
+        max-width: 18ch; margin: 0 auto;
+      }
+      .lede { margin: 1.6rem auto 0; max-width: 46ch; font-size: clamp(1.05rem, 2.3vw, 1.18rem); color: var(--d-muted); }
+      .btn {
+        margin-top: 2.8rem; display: inline-flex; align-items: center; gap: 0.5rem;
+        font-family: var(--sans); font-size: 1rem; font-weight: 500; letter-spacing: 0.01em;
+        text-decoration: none; cursor: pointer; border: none;
+        padding: 0.95rem 2.1rem; border-radius: 999px;
+        background: #ece8df; color: #141410;
+        transition: transform 0.18s ease, opacity 0.2s ease;
+      }
+      .btn:hover { transform: translateY(-1px); }
+      footer { border-top: 1px solid var(--d-line); padding: 2.4rem 0 3rem; }
+      .foot-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+      .foot-row .logo { font-size: 1.05rem; opacity: 0.8; }
+      .copyright { font-size: 0.8rem; color: var(--d-muted); }
+    </style>
+  </head>
+  <body>
+    <div class="inner">
+      <nav class="nav">
+        <a class="logo" href="/" aria-label="smartminimal">smart<span class="soft">minimal</span></a>
+        <a class="back" href="/">← Zurück</a>
+      </nav>
+    </div>
+
+    <main>
+      <div class="inner">
+        <div class="check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ece8df" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12.5l5 5L20 6.5" />
+          </svg>
+        </div>
+        <h1>Danke, deine Anfrage ist da.</h1>
+        <p class="lede">
+          Ich schaue sie mir in Ruhe an und melde mich persönlich bei dir. Wenn's
+          passt, reden wir. Wenn nicht, sag ich dir ehrlich, woran es liegt.
+        </p>
+        <a class="btn" href="/">Zurück zur Startseite</a>
+      </div>
+    </main>
+
+    <div class="inner">
+      <footer>
+        <div class="foot-row">
+          <a class="logo" href="/" aria-label="smartminimal">smart<span class="soft">minimal</span></a>
+          <span class="copyright">© 2026 smartminimal.de</span>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
