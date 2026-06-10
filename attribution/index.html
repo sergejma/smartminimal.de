@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marketing-Attribution &amp; Tracking für hochpreisige Produkte — smart minimal</title>
+    <meta
+      name="description"
+      content="Du gibst tausende Euro im Monat für Werbung aus – aber welcher Kanal bringt die Aufträge? Tracking, Offline-Conversions und Attribution für Produkte, die nicht per Klick gekauft werden. DSGVO-konform, dokumentiert übergeben."
+    />
+    <meta name="theme-color" content="#0d0d0b" />
+    <meta name="author" content="Sergej Markwart" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="smart minimal" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:title" content="Marketing-Attribution &amp; Tracking für hochpreisige Produkte — smart minimal" />
+    <meta
+      property="og:description"
+      content="Welcher Werbe-Euro bringt dir wirklich Umsatz? Tracking, Offline-Conversions und Attribution für Produkte, die am Telefon verkauft werden – nicht im Warenkorb."
+    />
+    <meta property="og:url" content="https://smartminimal.de/attribution/" />
+    <meta property="og:image" content="https://smartminimal.de/assets/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="smart minimal — Marketing-Attribution für hochpreisige Produkte" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Marketing-Attribution &amp; Tracking für hochpreisige Produkte — smart minimal" />
+    <meta name="twitter:description" content="Welcher Werbe-Euro bringt dir wirklich Umsatz? Tracking und Attribution vom ersten Klick bis zum unterschriebenen Auftrag." />
+    <meta name="twitter:image" content="https://smartminimal.de/assets/og.png" />
+
+    <link rel="canonical" href="https://smartminimal.de/attribution/" />
+
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <style>
+      :root {
+        --sans: -apple-system, "SF Pro Text", "Segoe UI", Roboto, Helvetica,
+          Arial, sans-serif;
+        --serif: "New York", "Iowan Old Style", "Palatino Linotype", Palatino,
+          Georgia, ui-serif, serif;
+
+        /* paper band */
+        --p-ink: #1b1a14;
+        --p-muted: rgba(27, 26, 20, 0.52);
+        --p-line: rgba(27, 26, 20, 0.08);
+        --p-card: rgba(255, 255, 255, 0.55);
+        --p-bgc: #f7f5ef;
+
+        /* dark band */
+        --d-fg: #ece8df;
+        --d-muted: rgba(236, 232, 223, 0.55);
+        --d-line: rgba(236, 232, 223, 0.1);
+        --d-card: rgba(255, 255, 255, 0.05);
+        --d-bgc: #17170f;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body {
+        background: #0d0d0b;
+        font-family: var(--sans);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        line-height: 1.55;
+        overflow-x: hidden;
+      }
+
+      .inner { max-width: 1080px; margin: 0 auto; padding: 0 24px; width: 100%; }
+
+      /* ---------- Bands ---------- */
+      .band { position: relative; }
+      .band.dark {
+        background: radial-gradient(120% 100% at 50% 0%, #1a1a12 0%, #0d0d0b 78%);
+        color: var(--d-fg);
+      }
+      .band.paper {
+        background: radial-gradient(120% 100% at 50% 0%, #f7f5ef 0%, #ece9e0 80%);
+        color: var(--p-ink);
+      }
+
+      /* ---------- Logo wordmark ---------- */
+      .logo {
+        font-family: var(--sans);
+        font-weight: 600;
+        letter-spacing: -0.015em;
+        user-select: none;
+        text-decoration: none;
+        color: inherit;
+        display: inline-block;
+      }
+      .logo .soft { font-weight: 500; opacity: 0.62; }
+
+      /* ---------- Nav ---------- */
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 24px 0 0;
+      }
+      .nav .logo { font-size: 1.25rem; }
+      .nav-links { display: flex; align-items: center; gap: 26px; font-size: 0.92rem; }
+      .nav-links a { color: var(--d-muted); text-decoration: none; transition: color 0.2s ease; }
+      .nav-links a:hover { color: var(--d-fg); }
+      .nav-links a.nav-cta { color: var(--d-fg); font-weight: 500; }
+      @media (max-width: 600px) { .nav-links .nav-text { display: none; } }
+
+      /* ---------- Buttons ---------- */
+      .btn {
+        font-family: var(--sans);
+        cursor: pointer;
+        border: none;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: transform 0.18s ease, opacity 0.2s ease;
+        font-size: 1rem;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+        padding: 0.95rem 2.1rem;
+        border-radius: 999px;
+      }
+      .btn:hover { transform: translateY(-1px); }
+      .btn:active { transform: translateY(0); opacity: 0.9; }
+      .btn-light { background: #ece8df; color: #141410; }
+      .btn-dark { background: #1b1a14; color: #f7f5ef; }
+      .btn-ghost {
+        background: none;
+        padding: 0.5rem 0.4rem;
+        font-size: 0.95rem;
+      }
+      .ghost-on-dark { color: var(--d-muted); }
+      .ghost-on-dark:hover { color: var(--d-fg); }
+
+      /* ---------- Hero ---------- */
+      .hero { text-align: center; padding: 9vh 0 0; }
+      .hero h1 {
+        font-family: var(--serif);
+        font-weight: 500;
+        font-size: clamp(2.4rem, 6.4vw, 4.4rem);
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+        max-width: 18ch;
+        margin: 0 auto;
+      }
+      .hero .lede {
+        margin: 1.7rem auto 0;
+        max-width: 56ch;
+        font-size: clamp(1.05rem, 2.3vw, 1.2rem);
+        color: var(--d-muted);
+      }
+      .cta-row {
+        margin-top: 2.6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.4rem;
+        flex-wrap: wrap;
+      }
+      .cta-note { margin-top: 1.2rem; font-size: 0.82rem; color: var(--d-muted); letter-spacing: 0.01em; }
+      .hero-mock { margin-top: 6vh; padding-bottom: 1px; display: flex; justify-content: center; }
+
+      /* ---------- Browser window mock ---------- */
+      .win {
+        width: min(100%, 560px);
+        border-radius: 16px;
+        overflow: hidden;
+      }
+      .win-bar {
+        height: 38px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 0 15px;
+        background: rgba(127, 127, 127, 0.16);
+        backdrop-filter: blur(4px);
+      }
+      .win-bar i { width: 10px; height: 10px; border-radius: 50%; background: rgba(127, 127, 127, 0.4); }
+      .win-url { margin-left: 12px; font-size: 11px; opacity: 0.45; font-variant: small-caps; letter-spacing: 0.04em; }
+
+      .screen { padding: clamp(2rem, 5vw, 3.2rem) clamp(1.4rem, 4vw, 2.6rem) clamp(2rem, 4vw, 3rem); text-align: left; }
+      .screen.light { background: #f4f2ea; color: #1b1a14; }
+      .screen.dark { background: #141410; color: #ece8df; }
+
+      .sys-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.7rem; }
+      .sys-head .s-logo { font-size: 0.92rem; font-weight: 600; letter-spacing: -0.01em; opacity: 0.55; }
+      .live { display: inline-flex; align-items: center; gap: 7px; font-size: 0.66rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(236, 232, 223, 0.55); }
+      .live .d { width: 7px; height: 7px; border-radius: 50%; background: #6fae7a; animation: pulse 2.6s ease-out infinite; }
+      @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(111, 174, 122, 0.5); }
+        70% { box-shadow: 0 0 0 7px rgba(111, 174, 122, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(111, 174, 122, 0); }
+      }
+
+      /* ---------- Kanal-Chart: Spend vs. Umsatz (hero mock) ---------- */
+      .ch { padding: 1.1rem 0; border-top: 1px solid rgba(236, 232, 223, 0.08); }
+      .ch:first-of-type { border-top: none; padding-top: 0; }
+      .ch:last-of-type { padding-bottom: 0; }
+      .ch-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 0.6rem; }
+      .ch-name { font-size: 0.92rem; font-weight: 600; letter-spacing: -0.01em; }
+      .ch-roas { font-size: 0.78rem; font-weight: 600; color: #8fc79a; font-variant-numeric: tabular-nums; flex-shrink: 0; }
+      .ch-roas.bad { color: #c98a7d; }
+      .ba-row { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.4rem; }
+      .ba-row:last-child { margin-bottom: 0; }
+      .ba-lab { width: 3.4rem; flex-shrink: 0; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.07em; color: rgba(236, 232, 223, 0.42); }
+      .ba-track { flex: 1; height: 10px; border-radius: 6px; background: rgba(236, 232, 223, 0.06); overflow: hidden; }
+      .ba-fill { height: 100%; border-radius: 6px; display: block; }
+      .ba-fill.before { background: rgba(236, 232, 223, 0.26); }
+      .ba-fill.after { background: linear-gradient(90deg, #6fae7a, #9fd0a8); }
+      .ba-fill.dead { background: linear-gradient(90deg, #b0705f, #c98a7d); }
+      .ba-val { width: 6rem; flex-shrink: 0; text-align: right; font-size: 0.84rem; font-variant-numeric: tabular-nums; color: var(--d-fg); }
+      .ba-row.is-before .ba-val { color: rgba(236, 232, 223, 0.5); }
+
+      .fchart-foot { display: flex; gap: 1.4rem; margin-top: 1.7rem; padding-top: 1.3rem; border-top: 1px solid rgba(236, 232, 223, 0.1); }
+      .fchart-foot .stat { flex: 1; }
+      .fchart-foot .stat .v { font-family: var(--serif); font-size: 1.35rem; font-weight: 500; letter-spacing: -0.01em; }
+      .fchart-foot .stat .k { font-size: 0.76rem; color: rgba(236, 232, 223, 0.5); margin-top: 2px; }
+
+      /* ---------- Journey-Timeline (light mock) ---------- */
+      #how { padding-bottom: 12vh; }
+      .mock-center { margin: 3rem auto 0; display: flex; justify-content: center; }
+      .jhead { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.6rem; }
+      .jhead .t { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(27, 26, 20, 0.5); }
+      .tag-live { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; background: #1b1a14; color: #f7f5ef; }
+      .road { display: flex; flex-direction: column; }
+      .r-item { display: flex; gap: 15px; }
+      .r-rail { display: flex; flex-direction: column; align-items: center; }
+      .r-dot {
+        width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
+        border: 1.5px solid rgba(27, 26, 20, 0.3);
+        display: flex; align-items: center; justify-content: center;
+        font-family: var(--serif); font-size: 0.82rem; color: rgba(27, 26, 20, 0.65);
+      }
+      .r-line { width: 1.5px; flex: 1; min-height: 15px; background: rgba(27, 26, 20, 0.14); margin: 3px 0; }
+      .r-body { padding-bottom: 17px; }
+      .r-item:last-child .r-body { padding-bottom: 0; }
+      .r-title { font-size: 0.97rem; font-weight: 600; letter-spacing: -0.01em; }
+      .r-sub { font-size: 0.82rem; color: rgba(27, 26, 20, 0.5); margin-top: 2px; }
+      .r-item.done .r-dot { background: #1b1a14; color: #f7f5ef; border-color: #1b1a14; }
+      .r-item.win-step .r-dot { background: #3e7d4c; border-color: #3e7d4c; color: #f7f5ef; box-shadow: 0 0 0 4px rgba(62, 125, 76, 0.12); }
+      .r-title .money { color: #3e7d4c; }
+
+      .blind { position: relative; margin-top: 4px; padding: 16px 16px 14px; border: 1.5px dashed rgba(27, 26, 20, 0.28); border-radius: 14px; }
+      .blind-tag {
+        position: absolute; top: -9px; right: 14px;
+        background: #f4f2ea; padding: 0 8px;
+        font-size: 0.6rem; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase;
+        color: rgba(27, 26, 20, 0.55);
+      }
+      .j-foot { margin-top: 1.6rem; padding-top: 1.2rem; border-top: 1px solid rgba(27, 26, 20, 0.08); font-size: 0.88rem; line-height: 1.55; color: rgba(27, 26, 20, 0.65); }
+      .j-foot strong { color: #1b1a14; }
+
+      /* ---------- Statement sections ---------- */
+      .statement { text-align: center; padding: 12vh 0; }
+      .statement .sc-eyebrow { font-size: 0.74rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; opacity: 0.5; margin-bottom: 1.3rem; }
+      .statement h2 {
+        font-family: var(--serif);
+        font-weight: 500;
+        font-size: clamp(2rem, 5vw, 3.1rem);
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+        max-width: 20ch;
+        margin: 0 auto;
+      }
+      .statement p { margin: 1.5rem auto 0; max-width: 56ch; font-size: 1.1rem; line-height: 1.6; }
+      .band.dark .statement p { color: var(--d-muted); }
+      .band.paper .statement p { color: var(--p-muted); }
+
+      /* ---------- Section heads ---------- */
+      .section-head { text-align: center; max-width: 46ch; margin: 0 auto; padding-top: 12vh; }
+      .section-head .sc-eyebrow { font-size: 0.74rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; opacity: 0.5; margin-bottom: 1rem; }
+      .section-head h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(2rem, 5vw, 3.1rem); letter-spacing: -0.02em; line-height: 1.1; }
+      .section-head p { margin: 1.2rem auto 0; max-width: 54ch; opacity: 0.62; font-size: 1.06rem; }
+      .band.dark .section-head p { color: var(--d-muted); }
+
+      /* ---------- Steps ---------- */
+      .steps { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: clamp(1.6rem, 4vw, 3rem); padding: 3rem 0 0; }
+      @media (max-width: 760px) { .steps { grid-template-columns: 1fr; row-gap: 1.8rem; } }
+      .step { padding-top: 1.3rem; border-top: 1px solid rgba(27, 26, 20, 0.16); }
+      .step .num { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; color: var(--p-muted); font-variant-numeric: tabular-nums; }
+      .step h3 { margin-top: 0.5rem; font-size: 1.08rem; font-weight: 600; letter-spacing: -0.01em; }
+      .step p { margin-top: 0.45rem; color: var(--p-muted); font-size: 0.95rem; }
+
+      /* ---------- Proof (stat cards) ---------- */
+      .proof { padding-bottom: 12vh; }
+      .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; padding: 4rem 0 0; }
+      @media (max-width: 760px) { .stats { grid-template-columns: 1fr; } }
+      .stat-card { border: 1px solid var(--d-line); background: var(--d-card); border-radius: 20px; padding: 2.2rem 1.9rem; text-align: center; }
+      .stat-card .v { font-family: var(--serif); font-weight: 500; font-size: clamp(2.2rem, 5vw, 2.9rem); letter-spacing: -0.02em; line-height: 1.05; }
+      .stat-card .k { margin-top: 0.7rem; font-size: 0.95rem; color: var(--d-muted); }
+
+      /* ---------- Offers (plan cards) ---------- */
+      .pricing { padding: 0 0 12vh; }
+      .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin: 3.5rem auto 0; }
+      @media (max-width: 820px) { .plans { grid-template-columns: 1fr; max-width: 460px; } }
+      .plan { border: 1px solid var(--p-line); background: var(--p-card); border-radius: 22px; padding: 2.1rem 1.9rem; display: flex; flex-direction: column; }
+      .plan.pro { background: #1b1a14; color: #f7f5ef; border-color: #1b1a14; }
+      .plan .plan-name { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--p-muted); }
+      .plan.pro .plan-name { color: rgba(247, 245, 239, 0.6); }
+      .plan .price { font-family: var(--serif); font-weight: 500; font-size: 2.1rem; letter-spacing: -0.02em; margin-top: 0.55rem; line-height: 1; }
+      .plan .plan-body { margin-top: 1.4rem; font-size: 0.97rem; line-height: 1.55; color: var(--p-ink); }
+      .plan.pro .plan-body { color: rgba(247, 245, 239, 0.92); }
+      .offer-foot { text-align: center; margin-top: 2.6rem; font-size: 0.95rem; color: var(--p-muted); }
+
+      /* ---------- FAQ ---------- */
+      .faq { max-width: 720px; margin: 4.5rem auto 0; }
+      .faq-item { padding: 1.5rem 0; border-top: 1px solid rgba(27, 26, 20, 0.14); }
+      .faq-item:first-child { border-top: none; }
+      .faq-item h3 { font-size: 1.06rem; font-weight: 600; letter-spacing: -0.01em; color: var(--p-ink); }
+      .faq-item p { margin-top: 0.55rem; color: var(--p-muted); font-size: 0.97rem; line-height: 1.6; max-width: 64ch; }
+      .band.dark .faq-item { border-top-color: var(--d-line); }
+      .band.dark .faq-item h3 { color: var(--d-fg); }
+      .band.dark .faq-item p { color: var(--d-muted); }
+
+      /* ---------- Who I am ---------- */
+      .who { display: grid; grid-template-columns: 0.8fr 1fr; gap: clamp(2rem, 6vw, 5rem); align-items: center; padding: 12vh 0; }
+      @media (max-width: 820px) { .who { grid-template-columns: 1fr; text-align: center; } .portrait { max-width: 360px; margin: 0 auto; } }
+      .who h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(1.9rem, 4.4vw, 2.7rem); line-height: 1.12; letter-spacing: -0.02em; }
+      .who p { margin-top: 1.2rem; font-size: 1.08rem; line-height: 1.6; color: var(--d-muted); }
+      .portrait {
+        width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; object-position: center;
+        border-radius: 20px; border: 1px solid var(--d-line);
+        box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.65); display: block;
+      }
+
+      /* ---------- Close + form ---------- */
+      .closing { text-align: center; padding: 13vh 0 4rem; }
+      .closing h2 {
+        font-family: var(--serif); font-weight: 500;
+        font-size: clamp(1.9rem, 4.8vw, 2.8rem);
+        letter-spacing: -0.02em; line-height: 1.18;
+        max-width: 24ch; margin: 0 auto;
+      }
+      .form-wrap { max-width: 520px; margin: 3.4rem auto 0; text-align: left; }
+      .field { margin-bottom: 1.1rem; }
+      .field label { display: block; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.02em; color: var(--p-ink); margin-bottom: 0.45rem; }
+      .field input {
+        width: 100%; font-family: var(--sans); font-size: 1rem; color: var(--p-ink);
+        background: rgba(255, 255, 255, 0.65);
+        border: 1px solid var(--p-line); border-radius: 12px;
+        padding: 0.85rem 1rem; transition: border-color 0.2s ease;
+      }
+      .field input::placeholder { color: rgba(27, 26, 20, 0.38); }
+      .field input:focus { outline: none; border-color: rgba(27, 26, 20, 0.4); }
+      .consent { margin: 0.3rem 0 1.4rem; }
+      .consent label { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.86rem; line-height: 1.5; color: var(--p-muted); cursor: pointer; }
+      .consent input { margin-top: 0.18rem; width: 1.05rem; height: 1.05rem; flex-shrink: 0; accent-color: #1b1a14; cursor: pointer; }
+      .consent a { color: var(--p-ink); text-underline-offset: 2px; }
+      .form-submit { margin-top: 0.6rem; }
+      .form-submit .btn { width: 100%; justify-content: center; }
+      .closing .cta-note { color: var(--p-muted); margin-top: 1.3rem; max-width: 46ch; margin-left: auto; margin-right: auto; }
+
+      /* ---------- Footer ---------- */
+      footer { border-top: 1px solid var(--p-line); padding: 3rem 0 4rem; }
+      .foot-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+      .foot-row .logo { font-size: 1.05rem; opacity: 0.8; }
+      .foot-links { display: flex; gap: 1.4rem; flex-wrap: wrap; font-size: 0.86rem; }
+      .foot-links a { color: var(--p-muted); text-decoration: none; transition: color 0.2s ease; }
+      .foot-links a:hover { color: var(--p-ink); }
+      .copyright { margin-top: 1.7rem; font-size: 0.8rem; color: var(--p-muted); }
+
+      /* ---------- Motion & Glanz ---------- */
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .reveal.in { opacity: 1; transform: none; }
+      .steps .step:nth-child(2), .stats .stat-card:nth-child(2), .plans .plan:nth-child(2),
+      .who .who-copy { transition-delay: 0.12s; }
+      .steps .step:nth-child(3), .stats .stat-card:nth-child(3), .plans .plan:nth-child(3) { transition-delay: 0.24s; }
+
+      @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+      .hero h1, .hero .lede, .hero .cta-row, .hero .cta-note, .hero-mock {
+        animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+      .hero .lede { animation-delay: 0.1s; }
+      .hero .cta-row { animation-delay: 0.2s; }
+      .hero .cta-note { animation-delay: 0.28s; }
+      .hero-mock { animation-delay: 0.36s; }
+
+      .hero { isolation: isolate; }
+      .hero::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        left: 50%;
+        top: -14%;
+        width: min(900px, 120vw);
+        aspect-ratio: 1.7;
+        transform: translateX(-50%);
+        background: radial-gradient(50% 50% at 50% 50%, rgba(226, 205, 160, 0.11), transparent 70%);
+        pointer-events: none;
+        animation: breathe 9s ease-in-out infinite alternate;
+      }
+      @keyframes breathe {
+        from { opacity: 0.55; transform: translateX(-50%) scale(1); }
+        to { opacity: 1; transform: translateX(-50%) scale(1.12); }
+      }
+
+      .band::after {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 1px;
+        pointer-events: none;
+        background: linear-gradient(90deg, transparent 10%, rgba(236, 232, 223, 0.25) 38%, rgba(255, 253, 245, 0.6) 50%, rgba(236, 232, 223, 0.25) 62%, transparent 90%);
+        background-size: 220% 100%;
+        opacity: 0.55;
+        animation: seam 14s linear infinite;
+      }
+      .band:first-child::after { display: none; }
+      @keyframes seam { from { background-position: 130% 0; } to { background-position: -130% 0; } }
+
+      .win {
+        box-shadow:
+          0 0 0 1px rgba(255, 255, 255, 0.07),
+          inset 0 1px 0 rgba(255, 255, 255, 0.08),
+          0 50px 100px -35px rgba(0, 0, 0, 0.55);
+      }
+
+      .ba-fill { transition: width 1.1s cubic-bezier(0.22, 1, 0.36, 1); }
+
+      .btn-light:hover { box-shadow: 0 8px 30px -8px rgba(236, 232, 223, 0.4); }
+      .btn-dark:hover { box-shadow: 0 8px 30px -10px rgba(27, 26, 20, 0.45); }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .reveal { opacity: 1; transform: none; transition: none; }
+        .hero h1, .hero .lede, .hero .cta-row, .hero .cta-note, .hero-mock { animation: none; }
+        .hero::before, .band::after, .live .d { animation: none; }
+        .ba-fill { transition: none; }
+      }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://smartminimal.de/attribution/#webpage",
+          "url": "https://smartminimal.de/attribution/",
+          "name": "Marketing-Attribution & Tracking für hochpreisige Produkte",
+          "inLanguage": "de-DE",
+          "isPartOf": { "@id": "https://smartminimal.de/#website" },
+          "about": { "@id": "https://smartminimal.de/#business" }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://smartminimal.de/attribution/#service",
+          "name": "Marketing-Attribution & Conversion-Tracking",
+          "serviceType": "Marketing-Attribution, Conversion-Tracking, Offline-Conversion-Tracking",
+          "provider": { "@id": "https://smartminimal.de/#business" },
+          "areaServed": { "@type": "Country", "name": "Deutschland" },
+          "description": "Tracking, Offline-Conversions und Attribution für hochpreisige, erklärungsbedürftige Produkte: vom ersten Klick bis zum unterschriebenen Auftrag messen, welcher Kanal Umsatz bringt."
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://smartminimal.de/attribution/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Was ist Marketing-Attribution?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Die Zuordnung von Umsatz zu den Werbekontakten, die ihn ausgelöst haben. Statt „wir hatten 80 Anfragen“ weißt du: Kampagne A hat Aufträge für 120.000 € gebracht, Kampagne B nur teure Klicks. Erst damit lässt sich Werbebudget begründet verteilen."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Mein Verkauf passiert am Telefon oder vor Ort. Kann man das überhaupt messen?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Ja, genau dafür ist das Setup gemacht. Anrufe, Termine und unterschriebene Aufträge werden als Offline-Conversions mit dem ursprünglichen Klick verknüpft und inklusive Auftragswert an die Werbeplattformen zurückgespielt. So lernt z. B. Google Ads, welche Kampagne 16.800 €-Aufträge bringt – nicht nur Klicks."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Ist das DSGVO-konform?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Ja. Das Setup ist einwilligungsbasiert: Gemessen wird, was deine Besucher über ein sauberes Consent-Management erlauben – keine Graubereich-Tricks. Serverseitiges Tracking ersetzt keine Einwilligung, macht die Messung aber deutlich robuster gegen Adblocker und Browser-Einschränkungen."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Brauche ich teure Attribution-Tools?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "In den meisten Fällen nein. Für Lead-Geschäft mit hochpreisigen Produkten reichen GA4, Tag Manager und die Schnittstellen der Werbeplattformen, sauber aufgesetzt, völlig aus. Tool-Abos für vierstellige Monatsbeträge sind eher etwas für große E-Commerce-Setups."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Ab welchem Werbebudget lohnt sich Attribution?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Als Faustregel ab etwa 3.000 € Werbebudget im Monat – darunter ist der Hebel zu klein, um den Aufwand zu rechtfertigen. Ein Tracking-Audit kann sich aber auch früher lohnen, etwa bevor du dein Budget erhöhst."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Was kostet das?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Das hängt davon ab, wie viele Kanäle und Systeme angebunden werden müssen. Den passenden Rahmen und die Investition besprechen wir persönlich – du bekommst eine klare Einschätzung, bevor irgendetwas startet. Der Einstieg ist immer der Tracking-Audit."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <!-- ===================== 1 · HERO (dark) ===================== -->
+    <div class="band dark">
+      <div class="inner">
+        <nav class="nav">
+          <a class="logo" href="/" aria-label="smartminimal">smart<span class="soft">minimal</span></a>
+          <div class="nav-links">
+            <a class="nav-text" href="#problem">Das Problem</a>
+            <a class="nav-text" href="#how">So funktioniert's</a>
+            <a class="nav-text" href="#pakete">Pakete</a>
+            <a class="nav-cta" href="#anfrage">Tracking-Check anfragen</a>
+          </div>
+        </nav>
+
+        <header class="hero">
+          <h1>Welcher Werbe&#8209;Euro bringt dir wirklich Umsatz?</h1>
+          <p class="lede">
+            Wenn dein Produkt mehrere tausend Euro kostet, passiert der Abschluss
+            selten im Online-Warenkorb – sondern Wochen später am Telefon.
+            Standard-Tracking sieht davon nichts. Ich baue dir Tracking und
+            Attribution, die den ganzen Weg messen: vom ersten Klick bis zum
+            unterschriebenen Auftrag.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-light" href="#anfrage">Tracking-Check anfragen</a>
+            <a class="btn btn-ghost ghost-on-dark" href="#how">So funktioniert's →</a>
+          </div>
+          <p class="cta-note">Sinnvoll ab ca. 3.000 € monatlichem Werbebudget.</p>
+
+          <div class="hero-mock">
+            <div class="win">
+              <div class="win-bar"><i></i><i></i><i></i><span class="win-url">smartminimal · attribution</span></div>
+              <div class="screen dark">
+                <div class="sys-head">
+                  <span class="s-logo">Spend → Umsatz · letzter Monat</span>
+                  <span class="live"><span class="d"></span>Daten fließen</span>
+                </div>
+
+                <div class="ch">
+                  <div class="ch-head"><span class="ch-name">Google Ads · Suche</span><span class="ch-roas">13,1× ROAS</span></div>
+                  <div class="ba-row is-before"><span class="ba-lab">Spend</span><span class="ba-track"><span class="ba-fill before" style="width:8%"></span></span><span class="ba-val">6.400 €</span></div>
+                  <div class="ba-row"><span class="ba-lab">Umsatz</span><span class="ba-track"><span class="ba-fill after" style="width:100%"></span></span><span class="ba-val">84.000 €</span></div>
+                </div>
+
+                <div class="ch">
+                  <div class="ch-head"><span class="ch-name">Meta Ads</span><span class="ch-roas">5,5× ROAS</span></div>
+                  <div class="ba-row is-before"><span class="ba-lab">Spend</span><span class="ba-track"><span class="ba-fill before" style="width:5%"></span></span><span class="ba-val">3.800 €</span></div>
+                  <div class="ba-row"><span class="ba-lab">Umsatz</span><span class="ba-track"><span class="ba-fill after" style="width:25%"></span></span><span class="ba-val">21.000 €</span></div>
+                </div>
+
+                <div class="ch">
+                  <div class="ch-head"><span class="ch-name">Display / Banner</span><span class="ch-roas bad">0× — abgeschaltet</span></div>
+                  <div class="ba-row is-before"><span class="ba-lab">Spend</span><span class="ba-track"><span class="ba-fill dead" style="width:3%"></span></span><span class="ba-val">1.900 €</span></div>
+                  <div class="ba-row"><span class="ba-lab">Umsatz</span><span class="ba-track"><span class="ba-fill after" style="width:0.5%"></span></span><span class="ba-val">0 €</span></div>
+                </div>
+
+                <div class="fchart-foot">
+                  <div class="stat"><div class="v">13,1×</div><div class="k">ROAS bester Kanal</div></div>
+                  <div class="stat"><div class="v">1.900 €</div><div class="k">Leerlauf-Spend gestoppt / Monat</div></div>
+                  <div class="stat"><div class="v">lückenlos</div><div class="k">vom Klick bis zum Auftrag</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+      </div>
+    </div>
+
+    <!-- ===================== 2 · DAS PROBLEM (paper) ===================== -->
+    <div class="band paper" id="problem">
+      <div class="inner">
+        <div class="statement reveal">
+          <p class="sc-eyebrow">Das Problem</p>
+          <h2>Dein Analytics sieht den Abschluss nie.</h2>
+          <p>
+            Bei Produkten ab ein paar tausend Euro fällt die Kaufentscheidung
+            nicht im Browser. Der Kunde klickt auf deine Anzeige, liest,
+            vergleicht – und ruft drei Wochen später an oder kommt vorbei. Für
+            dein Analytics sieht das aus wie ein Besucher, der nie gekauft hat.
+            Die Folge: Du optimierst auf Klicks und Anfragen statt auf Aufträge.
+            Und der Kanal, der die besten Kunden bringt, sieht auf dem Papier
+            oft am schlechtesten aus.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== 3 · WARUM DAS TEUER WIRD (dark) ===================== -->
+    <div class="band dark">
+      <div class="inner">
+        <div class="statement reveal">
+          <p class="sc-eyebrow">Warum das teuer wird</p>
+          <h2>Ohne saubere Zuordnung optimierst du blind.</h2>
+          <p>
+            Last-Click-Attribution belohnt den letzten Berührungspunkt und
+            ignoriert alles davor. Dazu kommen Consent-Banner, iOS und
+            Adblocker, die einen Teil der Daten schlucken. Wer auf diesen Zahlen
+            Budget-Entscheidungen trifft, schaltet gerne genau die Kampagnen ab,
+            die eigentlich verkaufen – und steckt mehr Geld in die, die nur
+            billige Klicks sammeln.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== 4 · SO FUNKTIONIERT'S (paper) ===================== -->
+    <div class="band paper" id="how">
+      <div class="inner">
+        <div class="section-head reveal">
+          <p class="sc-eyebrow">So funktioniert's</p>
+          <h2>Messen, was wirklich zählt: Aufträge, nicht Klicks.</h2>
+          <p>
+            Drei Bausteine, die aufeinander aufbauen. Am Ende siehst du pro
+            Kanal und Kampagne, was sie kostet und was sie an Umsatz bringt.
+          </p>
+        </div>
+        <div class="steps">
+          <div class="step reveal">
+            <div class="num">01</div>
+            <h3>Tracking-Fundament</h3>
+            <p>GA4, Tag Manager und Conversion-Tracking sauber und DSGVO-konform aufgesetzt – serverseitig, wo es sinnvoll ist.</p>
+          </div>
+          <div class="step reveal">
+            <div class="num">02</div>
+            <h3>Abschlüsse anbinden</h3>
+            <p>Anrufe, Termine und unterschriebene Aufträge fließen als Offline-Conversions zurück zu Google &amp; Co. – inklusive Auftragswert.</p>
+          </div>
+          <div class="step reveal">
+            <div class="num">03</div>
+            <h3>Attribution &amp; Reporting</h3>
+            <p>Ein Dashboard statt fünf Plattform-Wahrheiten: Spend und Umsatz pro Kanal, sauber zugeordnet. Darauf lässt sich Budget verschieben.</p>
+          </div>
+        </div>
+
+        <div class="mock-center reveal">
+          <div class="win">
+            <div class="win-bar"><i></i><i></i><i></i><span class="win-url">smartminimal · journey</span></div>
+            <div class="screen light">
+              <div class="jhead">
+                <span class="t">Eine echte Customer Journey · 17 Tage</span>
+                <span class="tag-live">Offline-Tracking aktiv</span>
+              </div>
+              <div class="road">
+                <div class="r-item done">
+                  <div class="r-rail"><span class="r-dot">01</span><span class="r-line"></span></div>
+                  <div class="r-body"><div class="r-title">Klick auf deine Google-Anzeige</div><div class="r-sub">Tag 1 · erster Kontakt, Quelle wird gespeichert</div></div>
+                </div>
+                <div class="r-item done">
+                  <div class="r-rail"><span class="r-dot">02</span><span class="r-line"></span></div>
+                  <div class="r-body"><div class="r-title">Ratgeber gelesen, Anfrage gestellt</div><div class="r-sub">Tag 3 · aus dem Besucher wird ein Lead</div></div>
+                </div>
+                <div class="r-item done">
+                  <div class="r-rail"><span class="r-dot">03</span><span class="r-line"></span></div>
+                  <div class="r-body"><div class="r-title">Rückkehr über die Suche nach deiner Marke</div><div class="r-sub">Tag 9 · Vergleichsphase</div></div>
+                </div>
+              </div>
+              <div class="blind">
+                <span class="blind-tag">Für Standard-Tracking unsichtbar</span>
+                <div class="road">
+                  <div class="r-item done">
+                    <div class="r-rail"><span class="r-dot">04</span><span class="r-line"></span></div>
+                    <div class="r-body"><div class="r-title">Anruf &amp; Beratungstermin</div><div class="r-sub">Tag 12 · passiert außerhalb der Website</div></div>
+                  </div>
+                  <div class="r-item win-step">
+                    <div class="r-rail"><span class="r-dot">05</span></div>
+                    <div class="r-body"><div class="r-title">Auftrag unterschrieben · <span class="money">16.800 €</span></div><div class="r-sub">Tag 17 · wird als Offline-Conversion zurückgespielt</div></div>
+                  </div>
+                </div>
+              </div>
+              <p class="j-foot">
+                <strong>Mit Attribution:</strong> Der Auftrag über 16.800 € wird dem
+                Google-Ads-Klick von Tag 1 zugeordnet. Du weißt, welche Kampagne
+                ihn gebracht hat – und Google kann auf genau solche Kunden
+                optimieren statt auf billige Klicks.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== 5 · PROOF (dark) ===================== -->
+    <div class="band dark" id="ergebnisse">
+      <div class="inner">
+        <div class="proof">
+          <div class="section-head reveal">
+            <p class="sc-eyebrow">Proof</p>
+            <h2>Über 10 Jahre Tracking &amp; Marketing für Warenkörbe von 10.000&nbsp;bis&nbsp;20.000&nbsp;€.</h2>
+            <p>Genau das Geschäft, in dem Standard-Tracking versagt: lange Entscheidungswege, Abschluss am Telefon oder vor Ort.</p>
+          </div>
+          <div class="stats">
+            <div class="stat-card reveal">
+              <div class="v">10+ Jahre</div>
+              <div class="k">Premium Produkte</div>
+            </div>
+            <div class="stat-card reveal">
+              <div class="v">Ø 17.000 €</div>
+              <div class="k">Warenkorbwert</div>
+            </div>
+            <div class="stat-card reveal">
+              <div class="v">25 Mio. €+</div>
+              <div class="k">Umsatz für Kunden generiert</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== 6 · PAKETE (paper) ===================== -->
+    <div class="band paper" id="pakete">
+      <div class="inner">
+        <div class="pricing">
+          <div class="section-head reveal" style="padding-top: 12vh">
+            <p class="sc-eyebrow">Pakete</p>
+            <h2>Drei Bausteine – vom Audit bis zur laufenden Analyse.</h2>
+          </div>
+          <div class="plans">
+            <div class="plan reveal">
+              <div class="plan-name">Tracking-Audit</div>
+              <div class="price">Der Einstieg</div>
+              <div class="plan-body">
+                Ich prüfe dein komplettes Setup: Wo gehen Daten verloren, was
+                wird falsch gezählt, welchen Zahlen kannst du trauen? Du
+                bekommst eine priorisierte Liste, was zu tun ist. Nichts
+                Umsetzbares dabei? Geld zurück.
+              </div>
+            </div>
+            <div class="plan pro reveal">
+              <div class="plan-name">Setup &amp; Übergabe</div>
+              <div class="price">Das Fundament</div>
+              <div class="plan-body">
+                Ich baue dein Tracking neu auf: GA4, Tag Manager, serverseitiges
+                Tracking, Offline-Conversions aus deinem CRM zurück in die
+                Werbeplattformen. Dokumentiert und an dich übergeben.
+              </div>
+            </div>
+            <div class="plan reveal">
+              <div class="plan-name">Laufende Analyse</div>
+              <div class="price">Nach Absprache</div>
+              <div class="plan-body">
+                Jeden Monat: Wohin ist dein Budget geflossen, was hat es
+                gebracht, wo wird umgeschichtet? Klare Empfehlungen statt
+                Reporting-Friedhof.
+              </div>
+            </div>
+          </div>
+          <p class="offer-foot">Den passenden Rahmen besprechen wir persönlich. Sinnvoll ab etwa 3.000 € monatlichem Werbebudget.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== 7 · WER ICH BIN (dark) ===================== -->
+    <div class="band dark">
+      <div class="inner">
+        <div class="who">
+          <img class="portrait reveal" src="/assets/sergej.jpg" alt="Sergej Markwart" width="900" height="900" />
+          <div class="who-copy reveal">
+            <h2>Keine Agentur, kein Junior-Team. Du arbeitest direkt mit mir.</h2>
+            <p>
+              Ich bin Sergej. Seit über 10 Jahren baue ich Marketing und
+              Tracking für teure, erklärungsbedürftige Produkte – und habe dabei
+              gelernt: Gute Budget-Entscheidungen kommen aus sauberen Daten,
+              nicht aus Bauchgefühl.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== 8 · CLOSE + FORM (paper) ===================== -->
+    <div class="band paper" id="anfrage">
+      <div class="inner">
+        <div class="closing">
+          <h2 class="reveal">Finde heraus, was dein Werbebudget wirklich leistet.</h2>
+
+          <form class="form-wrap" action="https://formspree.io/f/xojzqrpz" method="POST">
+            <input type="hidden" name="_subject" value="Neue Attribution-Anfrage über smartminimal.de" />
+            <input type="hidden" name="_next" value="https://smartminimal.de/danke.html" />
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="email">E-Mail</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="damit ich dir antworten kann" required />
+            </div>
+            <div class="field">
+              <label for="telefon">Telefon <span style="font-weight:400;opacity:.55">(optional)</span></label>
+              <input id="telefon" name="telefon" type="tel" autocomplete="tel" />
+            </div>
+            <div class="field">
+              <label for="firma">Firma</label>
+              <input id="firma" name="firma" type="text" autocomplete="organization" />
+            </div>
+            <div class="field">
+              <label for="budget">Aktuelles monatliches Werbebudget</label>
+              <input id="budget" name="budget" type="text" placeholder="z. B. 5.000 €" required />
+            </div>
+            <div class="field">
+              <label for="website">Website</label>
+              <input id="website" name="website" type="text" autocomplete="url" placeholder="deineseite.de" />
+            </div>
+            <div class="consent">
+              <label>
+                <input type="checkbox" name="datenschutz" value="zugestimmt" required />
+                <span>Ich habe die <a href="/datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage zu.</span>
+              </label>
+            </div>
+            <div class="field form-submit">
+              <button class="btn btn-dark" type="submit">Tracking-Check anfragen</button>
+            </div>
+          </form>
+
+          <p class="cta-note">
+            Du bekommst innerhalb von 48 Stunden eine ehrliche Einschätzung, ob
+            sich Attribution für dein Setup überhaupt lohnt – und wenn nicht,
+            sage ich dir das auch.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== 9 · FAQ (dark) ===================== -->
+    <div class="band dark" style="padding-bottom: 12vh">
+      <div class="inner">
+        <div class="section-head reveal">
+          <p class="sc-eyebrow">Fragen</p>
+          <h2>Häufige Fragen</h2>
+        </div>
+        <div class="faq reveal">
+          <div class="faq-item">
+            <h3>Was ist Marketing-Attribution?</h3>
+            <p>Die Zuordnung von Umsatz zu den Werbekontakten, die ihn ausgelöst haben. Statt „wir hatten 80 Anfragen“ weißt du: Kampagne A hat Aufträge für 120.000&nbsp;€ gebracht, Kampagne B nur teure Klicks. Erst damit lässt sich Werbebudget begründet verteilen.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Mein Verkauf passiert am Telefon oder vor Ort. Kann man das überhaupt messen?</h3>
+            <p>Ja – genau dafür ist das Setup gemacht. Anrufe, Termine und unterschriebene Aufträge werden als Offline-Conversions mit dem ursprünglichen Klick verknüpft und inklusive Auftragswert an die Werbeplattformen zurückgespielt. So lernt z.&nbsp;B. Google Ads, welche Kampagne 16.800&nbsp;€-Aufträge bringt – nicht nur Klicks.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Ist das DSGVO-konform?</h3>
+            <p>Ja. Das Setup ist einwilligungsbasiert: Gemessen wird, was deine Besucher über ein sauberes Consent-Management erlauben – keine Graubereich-Tricks. Serverseitiges Tracking ersetzt keine Einwilligung, macht die Messung aber deutlich robuster gegen Adblocker und Browser-Einschränkungen.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Brauche ich teure Attribution-Tools?</h3>
+            <p>In den meisten Fällen nein. Für Lead-Geschäft mit hochpreisigen Produkten reichen GA4, Tag Manager und die Schnittstellen der Werbeplattformen, sauber aufgesetzt, völlig aus. Tool-Abos für vierstellige Monatsbeträge sind eher etwas für große E-Commerce-Setups.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Ab welchem Werbebudget lohnt sich das?</h3>
+            <p>Als Faustregel: ab etwa 3.000&nbsp;€ Werbebudget im Monat – darunter ist der Hebel zu klein, um den Aufwand zu rechtfertigen. Ein Tracking-Audit kann sich aber auch früher lohnen, etwa bevor du dein Budget erhöhst.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Was kostet das?</h3>
+            <p>Das hängt davon ab, wie viele Kanäle und Systeme angebunden werden müssen. Den passenden Rahmen und die Investition besprechen wir persönlich – du bekommst eine klare Einschätzung, bevor irgendetwas startet. Der Einstieg ist immer der Tracking-Audit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== 10 · FOOTER (paper) ===================== -->
+    <div class="band paper">
+      <div class="inner">
+        <footer>
+          <div class="foot-row">
+            <a class="logo" href="/" aria-label="smartminimal">smart<span class="soft">minimal</span></a>
+            <div class="foot-links">
+              <a href="#how">So funktioniert's</a>
+              <a href="#pakete">Pakete</a>
+              <a href="/">Zur Startseite</a>
+              <a href="/impressum.html">Impressum</a>
+              <a href="/datenschutz.html">Datenschutz</a>
+              <a href="#" data-consent-open>Cookie-Einstellungen</a>
+              <a href="mailto:markwart@smartminimal.de">Kontakt</a>
+            </div>
+          </div>
+          <p class="copyright">© 2026 smartminimal.de</p>
+        </footer>
+      </div>
+    </div>
+
+    <script src="/consent.js" defer></script>
+    <script>
+      // Scroll-Reveals + wachsende Balken; bei reduzierter Bewegung bleibt alles statisch sichtbar
+      (function () {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        if (!("IntersectionObserver" in window)) {
+          document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
+          return;
+        }
+        document.querySelectorAll(".hero-mock .ba-fill").forEach(function (b) {
+          b.dataset.w = b.style.width;
+          b.style.width = "0%";
+        });
+        window.addEventListener("load", function () {
+          document.querySelectorAll(".hero-mock .ba-fill").forEach(function (b, i) {
+            setTimeout(function () { b.style.width = b.dataset.w; }, 500 + i * 110);
+          });
+        });
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            io.unobserve(e.target);
+            e.target.classList.add("in");
+          });
+        }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+        document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+      })();
+    </script>
+  </body>
+</html>

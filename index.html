@@ -372,6 +372,84 @@
       .foot-links a { color: var(--p-muted); text-decoration: none; transition: color 0.2s ease; }
       .foot-links a:hover { color: var(--p-ink); }
       .copyright { margin-top: 1.7rem; font-size: 0.8rem; color: var(--p-muted); }
+
+      /* ---------- Motion & Glanz ---------- */
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .reveal.in { opacity: 1; transform: none; }
+      .steps .step:nth-child(2), .stats .stat-card:nth-child(2), .plans .plan:nth-child(2),
+      .cases .case-card:nth-child(2), .who .who-copy { transition-delay: 0.12s; }
+      .steps .step:nth-child(3), .stats .stat-card:nth-child(3), .plans .plan:nth-child(3) { transition-delay: 0.24s; }
+
+      /* sanfter Lade-Einstieg im Hero */
+      @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+      .hero h1, .hero .lede, .hero .cta-row, .hero .cta-note, .hero-mock {
+        animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+      .hero .lede { animation-delay: 0.1s; }
+      .hero .cta-row { animation-delay: 0.2s; }
+      .hero .cta-note { animation-delay: 0.28s; }
+      .hero-mock { animation-delay: 0.36s; }
+
+      /* warm atmender Glow hinter dem Hero */
+      .hero { position: relative; isolation: isolate; }
+      .hero::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        left: 50%;
+        top: -14%;
+        width: min(900px, 120vw);
+        aspect-ratio: 1.7;
+        transform: translateX(-50%);
+        background: radial-gradient(50% 50% at 50% 50%, rgba(226, 205, 160, 0.11), transparent 70%);
+        pointer-events: none;
+        animation: breathe 9s ease-in-out infinite alternate;
+      }
+      @keyframes breathe {
+        from { opacity: 0.55; transform: translateX(-50%) scale(1); }
+        to { opacity: 1; transform: translateX(-50%) scale(1.12); }
+      }
+
+      /* glänzende Hairline an den Bandkanten */
+      .band::after {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 1px;
+        pointer-events: none;
+        background: linear-gradient(90deg, transparent 10%, rgba(236, 232, 223, 0.25) 38%, rgba(255, 253, 245, 0.6) 50%, rgba(236, 232, 223, 0.25) 62%, transparent 90%);
+        background-size: 220% 100%;
+        opacity: 0.55;
+        animation: seam 14s linear infinite;
+      }
+      .band:first-child::after { display: none; }
+      @keyframes seam { from { background-position: 130% 0; } to { background-position: -130% 0; } }
+
+      /* Mock-Fenster: feiner Lichtrand */
+      .win {
+        box-shadow:
+          0 0 0 1px rgba(255, 255, 255, 0.07),
+          inset 0 1px 0 rgba(255, 255, 255, 0.08),
+          0 50px 100px -35px rgba(0, 0, 0, 0.55);
+      }
+
+      /* Balken wachsen beim Sichtbarwerden (JS setzt Startbreite 0) */
+      .fbar .fill, .ba-fill { transition: width 1.1s cubic-bezier(0.22, 1, 0.36, 1); }
+
+      .btn-light:hover { box-shadow: 0 8px 30px -8px rgba(236, 232, 223, 0.4); }
+      .btn-dark:hover { box-shadow: 0 8px 30px -10px rgba(27, 26, 20, 0.45); }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .reveal { opacity: 1; transform: none; transition: none; }
+        .hero h1, .hero .lede, .hero .cta-row, .hero .cta-note, .hero-mock { animation: none; }
+        .hero::before, .band::after, .live .d { animation: none; }
+        .fbar .fill, .ba-fill { transition: none; }
+      }
     </style>
 
     <script type="application/ld+json">
@@ -505,7 +583,7 @@
           <p class="lede">
             Kunden für Premium Produkte zu gewinnen funktioniert anders als bei
             einem normalen Shop Produkt. Genau das mache ich seit über 10 Jahren
-            als Fullstack Marketer: Website Optimierungen, Funnel, Ads Tracking
+            als Fullstack Marketer: Website-Optimierung, Funnel, Ads, Tracking
             und Markenaufbau für Premium Produkte.
           </p>
           <div class="cta-row">
@@ -554,7 +632,7 @@
     <!-- ===================== 2 · DAS PROBLEM (paper) ===================== -->
     <div class="band paper">
       <div class="inner">
-        <div class="statement">
+        <div class="statement reveal">
           <p class="sc-eyebrow">Das Problem</p>
           <h2>Teure Produkte werden anders gekauft.</h2>
           <p>
@@ -571,7 +649,7 @@
     <!-- ===================== 3 · WARUM STRATEGIEN NICHT GREIFEN (dark) ===================== -->
     <div class="band dark">
       <div class="inner">
-        <div class="statement">
+        <div class="statement reveal">
           <p class="sc-eyebrow">Warum die üblichen Strategien hier nicht greifen</p>
           <h2>Die meisten Strategien sind für günstige Produkte gemacht.</h2>
           <p>
@@ -587,7 +665,7 @@
     <!-- ===================== 4 · WIE ICH ARBEITE (paper) ===================== -->
     <div class="band paper" id="how">
       <div class="inner">
-        <div class="section-head">
+        <div class="section-head reveal">
           <p class="sc-eyebrow">Wie ich arbeite</p>
           <h2>Ein System, das vom ersten Kontakt bis zur Kaufentscheidung trägt.</h2>
           <p>
@@ -598,24 +676,24 @@
           </p>
         </div>
         <div class="steps">
-          <div class="step">
+          <div class="step reveal">
             <div class="num">01</div>
             <h3>Research &amp; Analyse</h3>
             <p>Ich arbeite mich tief in deinen Markt und deine Käufer ein.</p>
           </div>
-          <div class="step">
+          <div class="step reveal">
             <div class="num">02</div>
             <h3>Die Maschine</h3>
             <p>Funnel, Landingpages, Ads, Tracking. Als ein System, nicht als Einzelteile.</p>
           </div>
-          <div class="step">
+          <div class="step reveal">
             <div class="num">03</div>
             <h3>Übergabe</h3>
             <p>Du bekommst die Maschine dokumentiert in die Hand. Kein Abo, keine Abhängigkeit.</p>
           </div>
         </div>
 
-        <div class="mock-center">
+        <div class="mock-center reveal">
           <div class="win">
             <div class="win-bar"><i></i><i></i><i></i><span class="win-url">smartminimal · funnel</span></div>
             <div class="screen light">
@@ -660,33 +738,33 @@
     <div class="band dark" id="ergebnisse">
       <div class="inner">
         <div class="proof">
-          <div class="section-head">
+          <div class="section-head reveal">
             <p class="sc-eyebrow">Proof</p>
             <h2>Über 10 Jahre mit Warenkörben von 10.000&nbsp;bis&nbsp;20.000&nbsp;€.</h2>
           </div>
           <div class="stats">
-            <div class="stat-card">
+            <div class="stat-card reveal">
               <div class="v">10+ Jahre</div>
               <div class="k">Premium Produkte</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-card reveal">
               <div class="v">Ø 17.000 €</div>
               <div class="k">Warenkorbwert</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-card reveal">
               <div class="v">25 Mio. €+</div>
               <div class="k">Umsatz für Kunden generiert</div>
             </div>
           </div>
 
-          <div class="section-head" style="padding-top: 11vh">
+          <div class="section-head reveal" style="padding-top: 11vh">
             <p class="sc-eyebrow">Vorher / Nachher</p>
             <h2>Was sich bei echten Kunden verändert hat.</h2>
             <p>Zwei anonymisierte Projekte. Gleiches Produkt, gleicher Markt – nur das System dahinter war neu.</p>
           </div>
 
           <div class="cases">
-            <div class="case-card">
+            <div class="case-card reveal">
               <div class="case-top">
                 <span class="case-tag">Case 01</span>
                 <span class="case-anon">anonymisiert</span>
@@ -710,7 +788,7 @@
               </div>
             </div>
 
-            <div class="case-card">
+            <div class="case-card reveal">
               <div class="case-top">
                 <span class="case-tag">Case 02</span>
                 <span class="case-anon">anonymisiert</span>
@@ -744,12 +822,12 @@
     <div class="band paper" id="pakete">
       <div class="inner">
         <div class="pricing">
-          <div class="section-head" style="padding-top: 12vh">
+          <div class="section-head reveal" style="padding-top: 12vh">
             <p class="sc-eyebrow">Angebote</p>
             <h2>Drei klare Pakete – vom Einstieg bis zur laufenden Betreuung.</h2>
           </div>
           <div class="plans">
-            <div class="plan">
+            <div class="plan reveal">
               <div class="plan-name">Analyse</div>
               <div class="price">Der Einstieg</div>
               <div class="plan-body">
@@ -758,7 +836,7 @@
                 nichts Umsetzbares, bekommst du dein Geld zurück.
               </div>
             </div>
-            <div class="plan pro">
+            <div class="plan pro reveal">
               <div class="plan-name">Setup &amp; Übergabe</div>
               <div class="price">Die Maschine</div>
               <div class="plan-body">
@@ -766,7 +844,7 @@
                 Tracking. Ich dokumentiere alles und übergebe sie dir.
               </div>
             </div>
-            <div class="plan">
+            <div class="plan reveal">
               <div class="plan-name">Laufende Betreuung</div>
               <div class="price">Nach Absprache</div>
               <div class="plan-body">
@@ -784,8 +862,8 @@
     <div class="band dark">
       <div class="inner">
         <div class="who">
-          <img class="portrait" src="assets/sergej.jpg" alt="Sergej Markwart" width="900" height="900" />
-          <div class="who-copy">
+          <img class="portrait reveal" src="assets/sergej.jpg" alt="Sergej Markwart" width="900" height="900" />
+          <div class="who-copy reveal">
             <h2>Keine Buzzwords, keine Vertriebsgespräche. Einfach jemand, der das hier richtig gut kann.</h2>
             <p>
               Ich bin ein bodenständiger Typ, der sich seit über 10 Jahren in eine
@@ -800,18 +878,27 @@
     <div class="band paper" id="anfrage">
       <div class="inner">
         <div class="closing">
-          <h2>Dein Produkt ist gut genug, dass Leute mehrere tausend Euro dafür zahlen. Dein Marketing darf da mithalten.</h2>
+          <h2 class="reveal">Dein Produkt ist gut genug, dass Leute mehrere tausend Euro dafür zahlen. Dein Marketing darf da mithalten.</h2>
 
           <form class="form-wrap" action="https://formspree.io/f/xojzqrpz" method="POST">
             <input type="hidden" name="_subject" value="Neue Anfrage über smartminimal.de" />
             <input type="hidden" name="_next" value="https://smartminimal.de/danke.html" />
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
             <div class="field">
               <label for="name">Name</label>
-              <input id="name" name="name" type="text" required />
+              <input id="name" name="name" type="text" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="email">E-Mail</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="damit ich dir antworten kann" required />
+            </div>
+            <div class="field">
+              <label for="telefon">Telefon <span style="font-weight:400;opacity:.55">(optional)</span></label>
+              <input id="telefon" name="telefon" type="tel" autocomplete="tel" />
             </div>
             <div class="field">
               <label for="firma">Firma</label>
-              <input id="firma" name="firma" type="text" />
+              <input id="firma" name="firma" type="text" autocomplete="organization" />
             </div>
             <div class="field">
               <label for="produkt">Produkt &amp; Preis</label>
@@ -837,9 +924,9 @@
           </form>
 
           <p class="cta-note">
-            Da ich leider nicht mit allen Kunden zusammenarbeiten kann, lass uns
-            als erstes prüfen, ob wir zusammenpassen. Ich freue mich auf deine
-            Anfrage!
+            Da ich nur mit wenigen Kunden gleichzeitig arbeite, prüfen wir als
+            erstes, ob wir zusammenpassen. Du hörst innerhalb von 48 Stunden
+            persönlich von mir.
           </p>
         </div>
       </div>
@@ -848,11 +935,11 @@
     <!-- ===================== 9 · FAQ (dark) ===================== -->
     <div class="band dark" style="padding-bottom: 12vh">
       <div class="inner">
-        <div class="section-head">
+        <div class="section-head reveal">
           <p class="sc-eyebrow">Fragen</p>
           <h2>Häufige Fragen</h2>
         </div>
-        <div class="faq">
+        <div class="faq reveal">
           <div class="faq-item">
             <h3>Für wen ist smart minimal gedacht?</h3>
             <p>Für Anbieter erklärungsbedürftiger Premium Produkte mit Warenkörben ab etwa 10.000&nbsp;€, bei denen eine Kaufentscheidung Wochen bis Monate dauert und nicht spontan per Klick fällt.</p>
@@ -887,6 +974,7 @@
               <a href="#how">So arbeite ich</a>
               <a href="#ergebnisse">Ergebnisse</a>
               <a href="#pakete">Pakete</a>
+              <a href="/attribution/">Attribution &amp; Tracking</a>
               <a href="/impressum.html">Impressum</a>
               <a href="/datenschutz.html">Datenschutz</a>
               <a href="#" data-consent-open>Cookie-Einstellungen</a>
@@ -899,5 +987,30 @@
     </div>
 
     <script src="/consent.js" defer></script>
+    <script>
+      // Scroll-Reveals + wachsende Balken; bei reduzierter Bewegung bleibt alles statisch sichtbar
+      (function () {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        if (!("IntersectionObserver" in window)) {
+          document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
+          return;
+        }
+        document.querySelectorAll(".fbar .fill, .ba-fill").forEach(function (b) {
+          b.dataset.w = b.style.width;
+          b.style.width = "0%";
+        });
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            io.unobserve(e.target);
+            e.target.classList.add("in");
+            e.target.querySelectorAll(".fbar .fill, .ba-fill").forEach(function (b, i) {
+              setTimeout(function () { b.style.width = b.dataset.w; }, 200 + i * 90);
+            });
+          });
+        }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+        document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+      })();
+    </script>
   </body>
 </html>
