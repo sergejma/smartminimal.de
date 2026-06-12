@@ -140,7 +140,7 @@
       .ghost-on-paper:hover { color: var(--p-ink); }
 
       /* ---------- Hero ---------- */
-      .hero { text-align: center; padding: 9vh 0 0; }
+      .hero { text-align: center; padding: 9vh 0 11vh; }
       .hero h1 {
         font-family: var(--serif);
         font-weight: 500;
@@ -452,7 +452,7 @@
       }
 
       /* ---------- Fluss-Diagramm (Kanäle → System → Ergebnisse) ---------- */
-      .flow-wrap { width: 100%; padding-bottom: clamp(4rem, 12vh, 9rem); }
+      .flow-wrap { width: 100%; margin-top: clamp(3rem, 7vh, 4.5rem); padding-bottom: clamp(4rem, 12vh, 9rem); }
       .flow {
         position: relative;
         display: grid;
@@ -672,8 +672,18 @@
           </div>
           <p class="cta-note">Kostenlos &amp; unverbindlich. Keine Verkaufsgespräche, nur wenige Kunden gleichzeitig.</p>
 
-          <div class="hero-mock">
-            <div class="flow-wrap">
+        </header>
+      </div>
+    </div>
+
+    <!-- ===================== 1b · DAS SYSTEM (dark) ===================== -->
+    <div class="band dark" id="system">
+      <div class="inner">
+        <div class="section-head reveal" style="padding-top: 10vh">
+          <p class="sc-eyebrow">Das System</p>
+          <h2>Vom ersten Klick bis zum unterschriebenen Auftrag.</h2>
+        </div>
+        <div class="flow-wrap reveal">
               <div class="flow" id="flow">
                 <div class="flow-col src">
                   <p class="flow-cap">Kanäle</p>
@@ -712,9 +722,7 @@
                 Schritt für Schritt Käufer – und am Ende siehst du, welcher
                 Kanal welche Aufträge gebracht hat.
               </p>
-            </div>
-          </div>
-        </header>
+        </div>
       </div>
     </div>
 
