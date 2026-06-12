@@ -466,32 +466,33 @@
       .flow-col.dst { align-items: flex-start; }
       .flow-cap {
         font-size: 0.68rem; font-weight: 600; text-transform: uppercase;
-        letter-spacing: 0.13em; color: rgba(236, 232, 223, 0.4); margin-bottom: 6px;
+        letter-spacing: 0.13em; color: rgba(27, 26, 20, 0.45); margin-bottom: 6px;
       }
       .fpill {
-        border: 1px solid rgba(236, 232, 223, 0.22);
+        border: 1px solid rgba(27, 26, 20, 0.25);
         border-radius: 999px;
         padding: 7px 15px;
         font-size: 0.76rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;
-        color: rgba(236, 232, 223, 0.75);
-        background: rgba(255, 255, 255, 0.03);
+        color: rgba(27, 26, 20, 0.7);
+        background: rgba(255, 255, 255, 0.5);
         white-space: nowrap;
       }
       .flow-center { position: relative; z-index: 1; display: flex; justify-content: center; }
       .machine {
         position: relative;
-        border: 1px solid rgba(236, 232, 223, 0.2);
+        color: #f7f5ef;
+        border: 1px solid #1b1a14;
         border-radius: 22px;
         padding: 1.5rem 1.6rem;
-        background: rgba(20, 20, 16, 0.85);
-        box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        background: #1b1a14;
+        box-shadow: 0 30px 70px -30px rgba(27, 26, 20, 0.55);
       }
       .machine::before {
         content: "";
         position: absolute;
         inset: -50px;
         z-index: -1;
-        background: radial-gradient(50% 50% at 50% 50%, rgba(226, 205, 160, 0.14), transparent 70%);
+        background: radial-gradient(50% 50% at 50% 50%, rgba(201, 163, 95, 0.28), transparent 70%);
         animation: breathe2 7s ease-in-out infinite alternate;
         pointer-events: none;
       }
@@ -518,7 +519,8 @@
         0%, 18%, 100% { background: transparent; border-color: rgba(236, 232, 223, 0.35); box-shadow: none; }
         6%, 12% { background: #8fc79a; border-color: #8fc79a; box-shadow: 0 0 10px rgba(143, 199, 154, 0.55); }
       }
-      .flow-note { text-align: center; margin: 2.6rem auto 0; max-width: 52ch; font-size: 0.95rem; color: var(--d-muted); }
+      .flow-note { text-align: center; margin: 2.6rem auto 0; max-width: 52ch; font-size: 0.95rem; color: var(--p-muted); }
+      .statement + .statement { padding-top: 0; }
       @media (max-width: 760px) {
         .flow { grid-template-columns: 1fr; gap: 2.4rem; justify-items: center; }
         .flow-col.src, .flow-col.dst { flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; }
@@ -676,8 +678,8 @@
       </div>
     </div>
 
-    <!-- ===================== 1b · DAS SYSTEM (dark) ===================== -->
-    <div class="band dark" id="system">
+    <!-- ===================== 1b · DAS SYSTEM (paper) ===================== -->
+    <div class="band paper" id="system">
       <div class="inner">
         <div class="section-head reveal" style="padding-top: 10vh">
           <p class="sc-eyebrow">Das System</p>
@@ -726,8 +728,8 @@
       </div>
     </div>
 
-    <!-- ===================== 2 · DAS PROBLEM (paper) ===================== -->
-    <div class="band paper">
+    <!-- ===================== 2 · DAS PROBLEM + STRATEGIEN (dark) ===================== -->
+    <div class="band dark">
       <div class="inner">
         <div class="statement reveal">
           <p class="sc-eyebrow">Das Problem</p>
@@ -740,12 +742,7 @@
             Vertrauen aufbauen, Zweifel ernst nehmen, in Ruhe überzeugen.
           </p>
         </div>
-      </div>
-    </div>
 
-    <!-- ===================== 3 · WARUM STRATEGIEN NICHT GREIFEN (dark) ===================== -->
-    <div class="band dark">
-      <div class="inner">
         <div class="statement reveal">
           <p class="sc-eyebrow">Warum die üblichen Strategien hier nicht greifen</p>
           <h2>Die meisten Strategien sind für günstige Produkte gemacht.</h2>
@@ -1118,7 +1115,7 @@
             var el = document.createElementNS(NS, "path");
             el.setAttribute("d", d);
             el.setAttribute("fill", "none");
-            el.setAttribute("stroke", "rgba(236, 232, 223, 0.13)");
+            el.setAttribute("stroke", "rgba(27, 26, 20, 0.18)");
             el.setAttribute("stroke-width", "1");
             el.id = "flowpath" + (pid++);
             svg.appendChild(el);
@@ -1155,7 +1152,7 @@
               p1 = rel(r.right, r.top + r.height / 2);
               p2 = rel(m.left, m.top + ((i + 1) / (srcs.length + 1)) * m.height);
             }
-            addDot(addPath(p1, p2, !vertical), "#e2cda0", 3.2, i * 0.55);
+            addDot(addPath(p1, p2, !vertical), "#c2a05e", 3.2, i * 0.55);
           });
           dsts.forEach(function (pill, i) {
             var r = pill.getBoundingClientRect();
@@ -1167,7 +1164,7 @@
               p1 = rel(m.right, m.top + ((i + 1) / (dsts.length + 1)) * m.height);
               p2 = rel(r.left, r.top + r.height / 2);
             }
-            addDot(addPath(p1, p2, !vertical), "#8fc79a", 3.2, 1.4 + i * 0.7);
+            addDot(addPath(p1, p2, !vertical), "#4f8f5f", 3.2, 1.4 + i * 0.7);
           });
         }
 
